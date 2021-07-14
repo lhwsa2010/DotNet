@@ -31,3 +31,4 @@ jobs:
           PROJECT_FILE_PATH: src/DotNet/DotNet.csproj
           NUGET_KEY: ${{secrets.NUGET_API_SECRET}}
           NUGET_SOURCE: https://api.nuget.org/v3/index.json
+          TAG_FORMAT: v*
