@@ -32,3 +32,4 @@ jobs:
           NUGET_KEY: ${{secrets.NUGET_API_SECRET}}
           NUGET_SOURCE: https://api.nuget.org
           TAG_FORMAT: v*
+          PACKAGE_NAME: DotNet
