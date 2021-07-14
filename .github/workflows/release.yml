@@ -30,6 +30,6 @@ jobs:
         with:
           PROJECT_FILE_PATH: src/DotNet/DotNet.csproj
           NUGET_KEY: ${{secrets.NUGET_API_SECRET}}
-          NUGET_SOURCE: https://api.nuget.org
+          NUGET_SOURCE: https://api.nuget.org/
           TAG_FORMAT: v*
           PACKAGE_NAME: DotNet
