@@ -1,4 +1,5 @@
 # 版本发布
+## 这里先提交tag版本时进行发布，待增加release功能后换成release来发布nuget package
 
 name: release
 
@@ -20,4 +21,13 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build
+        run: dotnet build --configuration Release DotNet
+      - name: Create the package
+        run: dotnet pack --configuration Release DotNet
+      - name: Publish the package to GPR
+        id: publish_nuget
+        uses: rohith/publish-nuget@v2
+        with:
+          PROJECT_FILE_PATH: ./src/DotNet/DotNet.csproj
+          NUGET_KEY: ${{srcrets.NUGET_API_SECRET}}
+          NUGET_SOURCE: https://api.nuget.org/v3/index.json
