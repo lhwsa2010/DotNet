@@ -15,4 +15,8 @@ Install-Package DotNetFool
 
 ## Usage
 
-dddd
+
+#!csharp
+var c=1;
+Console.Write(c);
+
