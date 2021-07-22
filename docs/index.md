@@ -23,35 +23,10 @@ layout: post
 Install-Package DotNetFool
 ```
 
-## Usage
+## About
 ---
-
-### GetInt
-+ bool convert to int
-```
-var b = true;
-Console.WriteLine(b.GetInt());
-var b2 = false;
-Console.WriteLine(b2.GetInt());
-```
-output:
-```
-1
-0
-```
-+ string convert to int
-```
-var s = "123.222";
-Console.WriteLine(s.GetInt());
-var s2 = "thankyou";
-Console.WriteLine(s2.GetInt());
-var s3 = "1233";
-Console.WriteLine(s3.GetInt());
-```
-output:
-```
-0
-0
-123
-```
-### Get
+这是一个使用了十年的.net类库，最近把它移植到.net core，因为每次引用需要来回复制，不方便管理，遂决定发布成NuGet包，于己方便，与人方便。
+### DotNetFool 是什么
+这是一个.net公共类库，提供了各种常用操作，如：字符串转数字、数字转布尔型等。
+### 问什么叫DotNetFool
+一直叫的名称是DotNet,因为发布NuGet包时无法使用DotNet,就随便改了一个可以验证通过的名称，于是DotNetFool诞生了。
