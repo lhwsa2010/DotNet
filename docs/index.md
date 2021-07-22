@@ -34,10 +34,23 @@ Console.WriteLine(b.GetInt());
 var b2 = false;
 Console.WriteLine(b2.GetInt());
 ```
-result:
+output:
 ```
 1
 0
 ```
 + string convert to int
-
+```
+var s = "123.222";
+Console.WriteLine(s.GetInt());
+var s2 = "thankyou";
+Console.WriteLine(s2.GetInt());
+var s3 = "1233";
+Console.WriteLine(s3.GetInt());
+```
+output:
+```
+0
+0
+123
+```
