@@ -24,6 +24,6 @@ Install-Package DotNetFool
 ```
 
 ## Usage
-
+<hr />
 dddd
 --------------
