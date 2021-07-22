@@ -20,4 +20,14 @@ Install-Package DotNetFool
 
 ## Usage
 
-dddd
+#### GetInt
+```
+bool.GetInt()//bool:true、false
+int.GetInt()//int?
+string.GetInt()
+```
+#### GetString
+```
+object.GetString()//Object?
+dateTime.GetString(timeformatter)//timeformatter:yyyy MM dd HH mm ss
+```
