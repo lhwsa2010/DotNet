@@ -39,3 +39,8 @@ var p = new Person();
 
 Person pp;
 Console.WriteLine(pp.GetString());
+
+#!csharp
+
+DateTime? d = DateTime.Now;
+Console.WriteLine(d.GetString("yyyy-MM-dd"));

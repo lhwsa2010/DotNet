@@ -7,7 +7,7 @@ layout: post
 ---
 
 ### GetString Method
-+ object(value type) convert to string
++ object convert to string
 if object is null,the default method ToString ,will throw exception,broke the program,but GetString will return string empty,is friendly.
 ```
 var i = 0;
@@ -25,4 +25,15 @@ output:
 False
 0.5
 0.58989898
+```
++ DateTime convert to string
+DateTime convert to string,if datetime is null,return string empty.
+*format* ie:yyyy-MM-dd
+```
+DateTime? d = DateTime.Now;
+Console.WriteLine(d.GetString("yyyy-MM-dd"));
+```
+output:
+```
+2021-07-23
 ```
