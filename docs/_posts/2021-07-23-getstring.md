@@ -2,7 +2,7 @@
 title: GetString
 author: 骆宏伟
 date: 2021-07-23
-category: String
+category: datatype
 layout: post
 ---
 
