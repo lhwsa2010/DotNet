@@ -30,3 +30,6 @@ Install-Package DotNetFool
 这是一个.net公共类库，提供了各种常用操作，如：字符串转数字、数字转布尔型等。
 ##### 为什么叫DotNetFool
 一直叫的名称是DotNet,因为发布NuGet包时无法使用DotNet,就随便改了一个可以验证通过的名称，于是DotNetFool诞生了。
+
+## Contributors
+钱豹(原项目拥有者)、夏延成、[骆宏伟](https://github.com/lhwsa2010)
