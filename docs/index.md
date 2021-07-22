@@ -26,5 +26,18 @@ Install-Package DotNetFool
 ## Usage
 ---
 
-dddd
----
+### GetInt
++ bool convert to int
+```
+var b = true;
+Console.WriteLine(b.GetInt());
+var b2 = false;
+Console.WriteLine(b2.GetInt());
+```
+result:
+```
+1
+0
+```
++ string convert to int
+
