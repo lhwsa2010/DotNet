@@ -24,6 +24,7 @@ Install-Package DotNetFool
 ```
 
 ## Usage
-<hr />
+<li class="divider"></li>
+
 dddd
 --------------
