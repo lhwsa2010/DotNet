@@ -14,6 +14,10 @@
 Install-Package DotNetFool
 ```
 
+## Docs
+
+[docs](https://lhwsa2010.github.io/DotNet)
+
 ## Usage
 
 dddd
