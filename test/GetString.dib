@@ -1,0 +1,41 @@
+#!markdown
+
+### GetString Method
+
+#!csharp
+
+#r "nuget:DotNetFool"
+
+#!markdown
+
++ object convert to string
+
+#!markdown
+
+if object is null,the default method ToString ,will throw exception,broke the program,but GetString will return string empty,is friendly.
+
+#!csharp
+
+var i = 0;
+Console.WriteLine(i.GetString());
+var b = false;
+Console.WriteLine(b.GetString());
+var f = 0.5f;
+Console.WriteLine(f.GetString());
+var d = 0.58989898m;
+Console.WriteLine(d.GetString());
+
+#!csharp
+
+public class Person
+{
+    public int Age { get; set; }
+    public string Name { get; set; }
+}
+
+var p = new Person();
+
+#!csharp
+
+Person pp;
+Console.WriteLine(pp.GetString());
