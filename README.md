@@ -29,5 +29,5 @@ string.GetInt()
 #### GetString
 ```
 object.GetString()//Object?
-dateTime.GetString(timeformatter)//timeformatter:yyyy MM dd HH mm ss
+dateTime.GetString(format)//timeformatter:yyyy MM dd HH mm ss
 ```
