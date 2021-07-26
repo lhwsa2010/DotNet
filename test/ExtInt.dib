@@ -1,0 +1,20 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.0/DotNet.dll"
+
+#!csharp
+
+int i = 0;
+Console.WriteLine(i.GetBool());
+int i2 = 123;
+Console.WriteLine(i2.GetBool());
+int? i3 = null;
+Console.WriteLine(i3.GetBool());
+
+#!csharp
+
+int? i2 = 123;
+Console.WriteLine(i2.GetInt());
+int? i3 = null;
+Console.WriteLine(i3.GetInt());
+Console.WriteLine(i3.GetInt(1));

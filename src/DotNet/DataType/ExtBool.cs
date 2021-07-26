@@ -18,13 +18,8 @@ namespace System
         public static int GetInt(this bool b)
         {
             if (b)
-            {
                 return 1;
-            }
-            else
-            {
-                return 0;
-            }
+            return 0;
         }
     }
 }

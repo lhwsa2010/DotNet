@@ -6,73 +6,45 @@ using System.Text;
 namespace System
 {
     /// <summary>
-    /// int
+    /// Int Extends
     /// </summary>
     public static class ExtInt
     {
         /// <summary>
-        /// 传入0为false ，反之为true
+        /// 0 convert to false ，others convert to true
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
         public static bool GetBool(this int i)
         {
-            bool b = true;
-
             if (i == 0)
-            {
-                b = false;
-            }
-            return b;
+                return false;
+            return true;
         }
 
 
         /// <summary>
-        /// 传入0或者null值为false ，反之为true
+        /// 0 or null convert to false,others convert to true
         /// </summary>
         /// <param name="i"></param>
         /// <returns></returns>
         public static bool GetBool(this int? i)
         {
-            bool b = true;
-            if (i.HasValue)
-            {
-                if (i == 0)
-                {
-                    b = false;
-                }
-            }
-            else
-            {
-                b = false;
-            }
-            return b;
+            i = i ?? 0;
+            if (i == 0)
+                return false;
+            return true;
         }
 
         /// <summary>
-        ///  传入可空int，返回int，（默认为0）
+        /// convert nullable int to int
         /// </summary>
-        /// <param name="i">可空int型参数</param>
-        /// <returns>true|false</returns>
-        public static int GetInt(this int? i)
-        {
-            return i.GetInt(0);
-        }
-
-        /// <summary>
-        /// 传入可空int，返回int
-        /// </summary>
-        /// <param name="i">可空int型参数</param>
-        /// <param name="defaultvalue">默认值</param>
+        /// <param name="i">nullable</param>
+        /// <param name="defaultvalue">defaultvalue</param>
         /// <returns></returns>
-        public static int GetInt(this int? i, int defaultvalue)
+        public static int GetInt(this int? i, int defaultvalue=0)
         {
-            int b = defaultvalue;
-            if (i.HasValue)
-            {
-                b = i.ToString().GetInt();
-            }
-            return b;
+            return i ?? defaultvalue;
         }
     }
 }
