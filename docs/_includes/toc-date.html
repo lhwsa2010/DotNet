@@ -16,7 +16,7 @@
 
             <li class="divider"></li>
 
-            {% assign reversed_posts = site.posts | reverse %}
+            <!-- {% assign reversed_posts = site.posts | reverse %}
 
             {% for post in reversed_posts %}
                 {% if page.url == post.url %}
@@ -28,15 +28,36 @@
                         {{ post.title | escape }}
                     </a>
                 </li>
+            {% endfor %} -->
+
+
+            
+            {% assign mydocs = site.documents | group_by: 'category'|reverse %}
+            {% for cat in mydocs %}
+           
+            <i style="font-size: 1.4rem;margin-left: 6px;color: #888;">{{ cat.name }}</i>
+            
+            {% assign posts = cat.items | sort: 'order' %}
+            {% for post in posts %}
+                {% if page.url == post.url %}
+                <li class="chapter active" data-level="1.2" data-path="{{site.baseurl}}{{post.url}}">
+                {% else %}
+                <li class="chapter" data-level="1.1" data-path="{{site.baseurl}}{{post.url}}">
+                {% endif %}
+                    <a href="{{site.baseurl}}{{post.url}}">
+                        {{ post.title | escape }}
+                    </a>
+                </li>
+            {% endfor %}
+           
             {% endfor %}
 
-            <!-- <li class="divider"></li>
 
-            <li>
-                <a href="https://github.com/sighingnow/jekyll-gitbook/fork" target="blank" class="gitbook-link">
-                    Fork it Now!
-                </a>
-            </li> -->
+
         </ul>
+
+       
+
+        
     </nav>
 </div>
