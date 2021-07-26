@@ -7,121 +7,104 @@ using System.Text.RegularExpressions;
 namespace System
 {
     /// <summary>
-    /// 对string类型的扩展
+    /// string Extends
     /// </summary>
     public static class ExtString
     {
         /// <summary>
-        /// 判断是否是null或者空字符串
+        /// check the string value is null or empty
         /// </summary>
         /// <param name="s"></param>
-        /// <returns></returns>
+        /// <returns>bool</returns>
         public static bool IsNullOrEmpty(this string s)
         {
             return string.IsNullOrEmpty(s);
         }
 
         /// <summary>
-        /// 转换成int类型
+        /// convert string to int
         /// </summary>
-        /// <param name="s"></param>
+        /// <param name="s">string</param>
         /// <returns></returns>
         public static int GetInt(this string s)
         {
-            int i = 0;
-            int.TryParse(s, out i);
+            int.TryParse(s,out int i);
             return i;
         }
 
         /// <summary>
-        /// 转换成long类型
+        /// convert string to long
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
         public static long GetLong(this string s)
         {
-            long i = 0;
-            long.TryParse(s, out i);
+            long.TryParse(s, out long i);
             return i;
         }
 
         /// <summary>
-        /// 转换成bool型，(null,"",0,false 为 false,其他是true)
+        /// convert string to bool,if string is null or string empty or false,return false,else return true
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
         public static bool GetBool(this string s)
         {
-            if (s == null)
-            {
-                return false;
-            }
-            if (s == "" || s == "0" || s.ToLower() == "false")
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            return s switch{
+                 null => false,
+                 ""=>false,
+                 "0"=>false,
+                 string value when value.Equals("false",StringComparison.OrdinalIgnoreCase)=>false,
+                 _=>true
+            };
         }
 
         /// <summary>
-        /// 字符串转换为decimal
+        /// convert string to decimal
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
         public static decimal GetDecimal(this string s)
         {
-            decimal d = 0;
-            decimal.TryParse(s, out d);
+            decimal.TryParse(s, out decimal d);
             return d;
         }
 
         /// <summary>
-        /// 字符串转为double
+        /// convert string to double
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
         public static double GetDouble(this string s)
         {
-            double d = 0;
-            double.TryParse(s, out d);
+            double.TryParse(s, out double d);
             return d;
         }
 
         /// <summary>
-        /// 字符串转为float
+        /// convert string to float
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
         public static float GetFloat(this string s)
         {
-            float f = 0;
-            float.TryParse(s, out f);
+            float.TryParse(s, out float f);
             return f;
         }
 
         /// <summary>
-        /// 字符串转时间类型，如果string不是时间格式的，直接返回当天时间
+        /// convert string to datetime,if string is not time format,return current time
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
         public static DateTime GetDateTime(this string s)
         {
-            DateTime d = DateTime.Now;
-            if (!string.IsNullOrEmpty(s))
-            {
-                DateTime.TryParse(s, out d);
-            }
-            if (d.ToString("yyyy-MM-dd") == "0001-01-01")
-            {
+            if (s.IsNullOrEmpty())
                 return DateTime.Now;
-            }
-            else
-            {
-                return d;
-            }
+            DateTime.TryParse(s, out DateTime d);
+            if (d.ToString("yyyy-MM-dd") == "0001-01-01")
+                return DateTime.Now;
+            return d;
         }
 
         /// <summary>

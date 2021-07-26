@@ -6,7 +6,7 @@ using System.Text;
 namespace System
 {
     /// <summary>
-    /// object
+    /// Object Extends
     /// </summary>
     public static class ExtObject
     {

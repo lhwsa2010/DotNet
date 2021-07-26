@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <PackageId>DotNetFool</PackageId>
     <Version>1.0.0</Version>
     <Authors>骆宏伟</Authors>
@@ -10,6 +10,10 @@
     <Copyright />
     <PackageIcon>Icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/lhwsa2010/DotNet</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>5</WarningLevel>
   </PropertyGroup>
 
   <ItemGroup>

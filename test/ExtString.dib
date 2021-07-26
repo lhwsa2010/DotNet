@@ -1,0 +1,81 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.0/DotNet.dll"
+
+#!csharp
+
+string s=string.Empty;
+Console.WriteLine(s.IsNullOrEmpty());
+s=null;
+Console.WriteLine(s.IsNullOrEmpty());
+s="";
+Console.WriteLine(s.IsNullOrEmpty());
+
+#!csharp
+
+string s=string.Empty;
+Console.WriteLine(s.GetInt());
+s=null;
+Console.WriteLine(s.GetInt());
+s="";
+Console.WriteLine(s.GetInt());
+s="abc";
+Console.WriteLine(s.GetInt());
+s="12";
+Console.WriteLine(s.GetInt());
+
+#!csharp
+
+string s="111111111111111";
+Console.WriteLine(s.GetLong());
+
+#!csharp
+
+string s=null;
+Console.WriteLine(s.GetBool());
+s="";
+Console.WriteLine(s.GetBool());
+s="0";
+Console.WriteLine(s.GetBool());
+s="false";
+Console.WriteLine(s.GetBool());
+s="1";
+Console.WriteLine(s.GetBool());
+s="true";
+Console.WriteLine(s.GetBool());
+
+#!csharp
+
+string s="";
+Console.WriteLine(s.GetDecimal());
+s="1.233425452";
+Console.WriteLine(s.GetDecimal());
+s="false";
+Console.WriteLine(s.GetDecimal());
+
+#!csharp
+
+string s="";
+Console.WriteLine(s.GetDouble());
+s="1.233425452";
+Console.WriteLine(s.GetDouble());
+s="false";
+Console.WriteLine(s.GetDouble());
+
+#!csharp
+
+string s="";
+Console.WriteLine(s.GetFloat());
+s="1.233425452";
+Console.WriteLine(s.GetFloat());
+s="false";
+Console.WriteLine(s.GetFloat());
+
+#!csharp
+
+string s=null;
+Console.WriteLine(s.GetDateTime());
+s="";
+Console.WriteLine(s.GetDateTime());
+s="2021-07-27 12:12:12";
+Console.WriteLine(s.GetDateTime());
