@@ -6,12 +6,12 @@ using System.Text;
 namespace System
 {
     /// <summary>
-    /// bool
+    /// Bool Extends
     /// </summary>
     public static class ExtBool
     {
         /// <summary>
-        /// 传入true返回1，反之为0
+        /// true convert to 1,false convert to 0
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
