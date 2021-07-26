@@ -8,7 +8,7 @@ layout: post
 
 ## Method
 
-#### GetInt
+#### GetString
 convert object to string ,if object is null return string empty
 ```
 object a=1;
