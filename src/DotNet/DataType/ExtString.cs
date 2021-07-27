@@ -28,7 +28,7 @@ namespace System
         /// <returns></returns>
         public static int GetInt(this string s)
         {
-            int.TryParse(s,out int i);
+            int.TryParse(s, out int i);
             return i;
         }
 
@@ -50,12 +50,13 @@ namespace System
         /// <returns></returns>
         public static bool GetBool(this string s)
         {
-            return s switch{
-                 null => false,
-                 ""=>false,
-                 "0"=>false,
-                 string value when value.Equals("false",StringComparison.OrdinalIgnoreCase)=>false,
-                 _=>true
+            return s switch
+            {
+                null => false,
+                "" => false,
+                "0" => false,
+                string value when value.Equals("false", StringComparison.OrdinalIgnoreCase) => false,
+                _ => true
             };
         }
 
@@ -115,61 +116,58 @@ namespace System
         public static string ToEncode(this string s)
         {
             if (string.IsNullOrEmpty(s))
-            {
                 return "";
-            }
-            else
-            {
-                return System.Web.HttpUtility.HtmlEncode(s.Trim());
-            }
+            return System.Web.HttpUtility.HtmlEncode(s.Trim());
         }
 
         /// <summary>
-        /// HtmlEncode
+        /// HtmlDecode
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
         public static string ToDecode(this string s)
         {
             if (string.IsNullOrEmpty(s))
-            {
                 return "";
-            }
-            else
-            {
                 return System.Web.HttpUtility.HtmlDecode(s.Trim());
-            }
         }
 
         /// <summary>
-        /// 截取字符串，大于length，返回length-2+"..",否则直接返回s
+        /// substring.If string is null or empty return empty.
+        /// If param length is big than string's length,return string,
+        /// else substring of length string with suffix.
         /// </summary>
         /// <param name="s"></param>
         /// <param name="length"></param>
+        /// <param name="suffix"></param>
         /// <returns></returns>
-        public static string Subs(this string s, int length)
+        public static string Subs(this string s, int length, string suffix= "")
         {
-            return Subs(s, length, "..");
-        }
-
-        /// <summary>
-        /// 截取字符串，大于length，返回length+后缀,否则直接返回s
-        /// </summary>
-        /// <param name="s"></param>
-        /// <param name="length"></param>
-        /// <param name="houzhui"></param>
-        /// <returns></returns>
-        public static string Subs(this string s, int length, string houzhui)
-        {
+            s=s.GetString();
             if (s.Length > length)
-            {
-                s = s.Substring(0, length) + houzhui;
-            }
+                s = s.Substring(0, length) + suffix;
             return s;
         }
 
         /// <summary>
-        /// 加密成base64
+		/// substring start at a specified character position and has a specified length.
+		/// </summary>
+		/// <param name="s"></param>
+		/// <param name="index"></param>
+		/// <param name="length"></param>
+		/// <returns></returns>
+		public static string Subs(this string s, int startIndex, int length)
+        {
+            s=s.GetString();
+            if (s.Length >= startIndex + length)
+                return s.Substring(startIndex, length);
+            return s;
+        }
+
+
+
+        /// <summary>
+        /// convert string to base64
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -179,7 +177,7 @@ namespace System
         }
 
         /// <summary>
-        /// 解密base64
+        /// convert to string from base64
         /// </summary>
         /// <param name="s"></param>
         /// <returns></returns>
@@ -250,7 +248,7 @@ namespace System
 
             //可以这样
             regex_str = "\t*";//替换\t为空
-            strHtml = Regex.Replace(strHtml, regex_str, "", RegexOptions.IgnoreCase);             
+            strHtml = Regex.Replace(strHtml, regex_str, "", RegexOptions.IgnoreCase);
             //可以
             regex_str = "'";//替换'为’
             strHtml = Regex.Replace(strHtml, regex_str, "’", RegexOptions.IgnoreCase);
@@ -272,33 +270,6 @@ namespace System
 
 
 
-        ///// <summary>
-        ///// 正则表达式判断是否匹配
-        ///// </summary>
-        ///// <param name="s"></param>
-        ///// <param name="pattern"></param>
-        ///// <returns></returns>
-        //public static bool IsMatch(this string s, string pattern)
-        //{
-        //    if (s == null)
-        //        return false;
-        //    else
-        //        return Regex.IsMatch(s, pattern);
-        //}
-
-        ///// <summary>
-        ///// 正则表达式匹配字符串
-        ///// </summary>
-        ///// <param name="s"></param>
-        ///// <param name="pattern"></param>
-        ///// <returns></returns>
-        //public static string Match(this string s, string pattern)
-        //{
-        //    if (s == null)
-        //        return "";
-        //    return
-        //        Regex.Match(s, pattern).Value;
-        //}
 
         /// <summary>
         /// 取字符串左侧多少个字符，如果超出字符串长度，则直接返回字符串

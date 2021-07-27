@@ -1,6 +1,6 @@
 #!csharp
 
-#r "../src/DotNet/bin/Debug/netstandard2.0/DotNet.dll"
+#r "../src/DotNet/bin/Debug/netstandard2.1/DotNet.dll"
 
 #!csharp
 
@@ -79,3 +79,30 @@ s="";
 Console.WriteLine(s.GetDateTime());
 s="2021-07-27 12:12:12";
 Console.WriteLine(s.GetDateTime());
+
+#!csharp
+
+string s="http://localhost:90/api/docs/1?name=LA&age=12";
+s.ToEncode()
+
+#!csharp
+
+string s="http://localhost:90/api/docs/1?name=LA&age=12";
+s.ToDecode()
+
+#!csharp
+
+string s="abcdefghijkmnopqrstuvwxyz";
+Console.WriteLine(s.Subs(27));
+Console.WriteLine(s.Subs(3));
+Console.WriteLine(s.Subs(3,"..."));
+Console.WriteLine(s.Subs(1,3));
+s=null;
+Console.WriteLine(s.Subs(3,"..."));
+
+#!csharp
+
+string s="abcdefg";
+Console.WriteLine(s.ToBase64());
+s="YWJjZGVmZw==";
+Console.WriteLine(s.FromBase64());

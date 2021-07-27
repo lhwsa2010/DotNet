@@ -153,3 +153,65 @@ output:
 2021/7/27 12:12:12
 ```
 
+#### ToEncode
+HtmlEncode
+```
+string s="http://localhost:90/api/docs/1?name=LA&age=12";
+s.ToEncode()
+```
+output:
+```
+http://localhost:90/api/docs/1?name=LA&amp;age=12
+```
+#### ToDecode
+HtmlDecode
+```
+string s="http://localhost:90/api/docs/1?name=LA&age=12";
+s.ToDecode()
+```
+output:
+```
+http://localhost:90/api/docs/1?name=LA&age=12
+```
+
+#### Subs
+substring.If string is null or empty return empty.If param length is big than string's length,return string else substring of length string with suffix.
+```
+string s="abcdefghijkmnopqrstuvwxyz";
+Console.WriteLine(s.Subs(27));
+Console.WriteLine(s.Subs(3));
+Console.WriteLine(s.Subs(3,"..."));
+Console.WriteLine(s.Subs(1,3));
+s=null;
+Console.WriteLine(s.Subs(3,"..."));
+```
+output:
+```
+abcdefghijkmnopqrstuvwxyz
+abc
+abc...
+bcd
+
+```
+
+#### ToBase64
+convert string to base64
+```
+string s="abcdefg";
+Console.WriteLine(s.ToBase64());
+```
+output:
+```
+YWJjZGVmZw==
+```
+
+#### FromBase64
+convert to string from base64
+```
+string s="YWJjZGVmZw==";
+Console.WriteLine(s.FromBase64());
+```
+output:
+```
+abcdefg
+```
