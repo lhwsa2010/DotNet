@@ -5,6 +5,9 @@ using System.Text.RegularExpressions;
 
 namespace System
 {
+    /// <summary>
+    /// HtmlString Extends
+    /// </summary>
     public static class HtmlString
     {
         /// <summary>

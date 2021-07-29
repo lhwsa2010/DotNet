@@ -6,67 +6,36 @@ using System.Text;
 namespace System
 {
     /// <summary>
-    /// DateTime
+    /// DateTime Extends
     /// </summary>
     public static class ExtDatetime
     {
         /// <summary>
-        /// datetime? to datetime(格式：例：yyyy-MM-dd hh:mm:ss)
+        /// convert nullable DateTime to DateTime.
         /// </summary>
-        /// <param name="s"></param>
         /// <returns></returns>
-        public static DateTime GetDateTime(this DateTime? s)
+        public static DateTime GetDateTime(this DateTime? d)
         {
-            if (s.HasValue)
-            {
-                DateTime d = DateTime.Now;
-                DateTime.TryParse(s.GetString(), out d);
-                return d;
-            }
-            else
-            {
-                return DateTime.Now;
-            }
+            return d ?? DateTime.Now;
         }
 
         /// <summary>
-        /// datetime? to String
+        /// convert nullable DateTime to string(format：i.e：yyyy-MM-dd hh:mm:ss)
         /// </summary>
-        /// <param name="s"></param>
         /// <param name="format">yyyy-MM-dd etc.</param>
         /// <returns></returns>
-        public static string GetString(this DateTime? s, string format)
+        public static string GetString(this DateTime? d, string format)
         {
-            if (s.HasValue)
-            {
-                DateTime d = DateTime.Now;
-                DateTime.TryParse(s.GetString(), out d);
-                return d.ToString(format);
-            }
-            else
-            {
-                return DateTime.Now.ToString(format);
-            }
+            return (d ?? DateTime.Now).ToString(format);
         }
 
         /// <summary>
-        /// 2009-09-09 12:30 星期三
-        /// </summary>
-        /// <param name="dt">传入的时间</param>
-        /// <returns>格式：2009-09-09 12:30 星期三</returns>
-        public static string Formate(this DateTime dt)
-        {
-            return Formate(dt, false);
-        }
-
-        /// <summary>
-        /// 2009-09-09
-        /// 12:30 星期三
+        /// 将日期转换成`日期+汉字`格式
         /// </summary>
         /// <param name="dt">传入的时间</param>
         /// <param name="br">默认为false不换行，true换行</param>
         /// <returns>br=false格式：2009-09-09 br 12:30 星期三</returns>
-        public static string Formate(this DateTime dt, bool br)
+        public static string Formate(this DateTime dt, bool br=false)
         {
             DateTime now = DateTime.Now;
             DateTime date = dt.Date;

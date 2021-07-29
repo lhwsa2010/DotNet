@@ -8,7 +8,7 @@ layout: post
 
 ## Method
 
-#### ExtDouble
+#### GetDouble
 convert nullable double to double
 ```
 double? d=null;
