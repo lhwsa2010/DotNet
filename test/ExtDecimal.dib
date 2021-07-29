@@ -1,0 +1,10 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.1/DotNet.dll"
+
+#!csharp
+
+decimal? d=null;
+Console.WriteLine(d.GetDecimal());
+d=0.1M;
+Console.WriteLine(d.GetDecimal());
