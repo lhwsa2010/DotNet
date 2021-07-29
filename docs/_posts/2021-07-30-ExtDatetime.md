@@ -30,18 +30,18 @@ output:
 2021-07-30 01:33:16
 ```
 
-#### Formate(bool)
+#### FormatCN(bool)
 将日期转换成`日期+汉字`格式 (格式：2009-09-09 12:30 星期三)
 ```
 DateTime d=DateTime.Now;
-Console.WriteLine(d.Formate());
-Console.WriteLine(d.Formate(true));
+Console.WriteLine(d.FormatCN());
+Console.WriteLine(d.FormatCN(true));
 d=DateTime.Now.AddDays(-1);
-Console.WriteLine(d.Formate());
-Console.WriteLine(d.Formate(true));
+Console.WriteLine(d.FormatCN());
+Console.WriteLine(d.FormatCN(true));
 d=DateTime.Now.AddDays(1);
-Console.WriteLine(d.Formate());
-Console.WriteLine(d.Formate(true));
+Console.WriteLine(d.FormatCN());
+Console.WriteLine(d.FormatCN(true));
 ```
 output:
 ```

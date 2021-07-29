@@ -12,11 +12,11 @@ Console.WriteLine(d.GetString("yyyy-MM-dd hh:mm:ss"));
 #!csharp
 
 DateTime d=DateTime.Now;
-Console.WriteLine(d.Formate());
-Console.WriteLine(d.Formate(true));
+Console.WriteLine(d.FormatCN());
+Console.WriteLine(d.FormatCN(true));
 d=DateTime.Now.AddDays(-1);
-Console.WriteLine(d.Formate());
-Console.WriteLine(d.Formate(true));
+Console.WriteLine(d.FormatCN());
+Console.WriteLine(d.FormatCN(true));
 d=DateTime.Now.AddDays(1);
-Console.WriteLine(d.Formate());
-Console.WriteLine(d.Formate(true));
+Console.WriteLine(d.FormatCN());
+Console.WriteLine(d.FormatCN(true));
