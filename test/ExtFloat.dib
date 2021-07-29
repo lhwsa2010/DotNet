@@ -1,0 +1,10 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.1/DotNet.dll"
+
+#!csharp
+
+float? d=null;
+Console.WriteLine(d.GetFloat());
+d=0.1F;
+Console.WriteLine(d.GetFloat());
