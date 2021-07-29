@@ -7,6 +7,7 @@ namespace DotNet.DataType
 {
     public static class ExtEnum
     {
+        /// <summary>
         /// 用于字符串和枚举类型的转换
         /// </summary>
         /// <typeparam name="T"></typeparam>
