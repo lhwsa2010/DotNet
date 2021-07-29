@@ -153,27 +153,6 @@ output:
 2021/7/27 12:12:12
 ```
 
-#### ToEncode
-HtmlEncode
-```
-string s="http://localhost:90/api/docs/1?name=LA&age=12";
-s.ToEncode()
-```
-output:
-```
-http://localhost:90/api/docs/1?name=LA&amp;age=12
-```
-#### ToDecode
-HtmlDecode
-```
-string s="http://localhost:90/api/docs/1?name=LA&age=12";
-s.ToDecode()
-```
-output:
-```
-http://localhost:90/api/docs/1?name=LA&age=12
-```
-
 #### Subs
 substring.If string is null or empty return empty.If param length is big than string's length,return string else substring of length string with suffix.
 ```
@@ -214,4 +193,26 @@ Console.WriteLine(s.FromBase64());
 output:
 ```
 abcdefg
+```
+
+#### Left
+Get count of chars start left.If param count is bigger than length of string ,return string direct.
+```
+string s="0123456789";
+s.Left(3)
+```
+output:
+```
+012
+```
+
+#### Right
+Get count of chars start right.If param count is bigger than length of string ,return string direct.
+```
+string s="0123456789";
+s.Right(3)
+```
+output:
+```
+789
 ```

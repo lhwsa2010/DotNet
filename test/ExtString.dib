@@ -106,3 +106,17 @@ string s="abcdefg";
 Console.WriteLine(s.ToBase64());
 s="YWJjZGVmZw==";
 Console.WriteLine(s.FromBase64());
+
+#!csharp
+
+string s="<span>this is a span lable</span>";
+s.DeleteHMTL()
+
+#!csharp
+
+string s="0123456789";
+s.Left(3)
+
+#!csharp
+
+s.Right(3)

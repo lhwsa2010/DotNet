@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace System
 {
@@ -108,33 +107,10 @@ namespace System
             return d;
         }
 
-        /// <summary>
-        /// HtmlEncode
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        public static string ToEncode(this string s)
-        {
-            if (string.IsNullOrEmpty(s))
-                return "";
-            return System.Web.HttpUtility.HtmlEncode(s.Trim());
-        }
-
-        /// <summary>
-        /// HtmlDecode
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        public static string ToDecode(this string s)
-        {
-            if (string.IsNullOrEmpty(s))
-                return "";
-                return System.Web.HttpUtility.HtmlDecode(s.Trim());
-        }
-
+        
         /// <summary>
         /// substring.If string is null or empty return empty.
-        /// If param length is big than string's length,return string,
+        /// If param length is bigger than string's length,return string,
         /// else substring of length string with suffix.
         /// </summary>
         /// <param name="s"></param>
@@ -186,93 +162,9 @@ namespace System
             return System.Text.Encoding.Default.GetString(Convert.FromBase64String(s));
         }
 
-        /// <summary>
-        /// 删除html代码，保留文本值
-        /// </summary>
-        /// <param name="htmlstring"></param>
-        /// <returns></returns>
-        public static string DeleteHMTL(this string htmlstring)
-        {
-            htmlstring = Regex.Replace(htmlstring, "<script[^>]*?>.*?</script>", "", RegexOptions.IgnoreCase);
-            htmlstring = Regex.Replace(htmlstring, "</P>", "\n", RegexOptions.IgnoreCase);
-            htmlstring = Regex.Replace(htmlstring, "<br>", "\n", RegexOptions.IgnoreCase);
-            htmlstring = Regex.Replace(htmlstring, "<(.[^>]*)>", "", RegexOptions.IgnoreCase);
-            htmlstring = Regex.Replace(htmlstring, "-->", "", RegexOptions.IgnoreCase);
-            htmlstring = Regex.Replace(htmlstring, "<!--.*", "", RegexOptions.IgnoreCase);
-            htmlstring = Regex.Replace(htmlstring, "&(quot|#34);", "\"", RegexOptions.IgnoreCase);
-            htmlstring = Regex.Replace(htmlstring, "&(amp|#38);", "&", RegexOptions.IgnoreCase);
-            htmlstring = Regex.Replace(htmlstring, "&(lt|#60);", "<", RegexOptions.IgnoreCase);
-            htmlstring = Regex.Replace(htmlstring, "&(gt|#62);", ">", RegexOptions.IgnoreCase);
-            htmlstring = Regex.Replace(htmlstring, "&(nbsp|#160);", " ", RegexOptions.IgnoreCase);
-            htmlstring = Regex.Replace(htmlstring, "&(iexcl|#161);", "\x00a1", RegexOptions.IgnoreCase);
-            htmlstring = Regex.Replace(htmlstring, "&(cent|#162);", "\x00a2", RegexOptions.IgnoreCase);
-            htmlstring = Regex.Replace(htmlstring, "&(pound|#163);", "\x00a3", RegexOptions.IgnoreCase);
-            htmlstring = Regex.Replace(htmlstring, "&(copy|#169);", "\x00a9", RegexOptions.IgnoreCase);
-            htmlstring = Regex.Replace(htmlstring, @"&#(\d+);", "", RegexOptions.IgnoreCase);
-            htmlstring.Replace("<", "");
-            htmlstring.Replace(">", "");
-            return htmlstring;
-        }
-
 
         /// <summary>
-        /// 去除HTML标记
-        /// </summary>
-        /// <param name="strHtml">包括HTML的源码 </param>
-        /// <returns>已经去除后的文字</returns>
-        public static string StripHTML(this string strHtml)
-        {
-            //regex_str="<script type=\\s*[^>]*>[^<]*?</script>";//替换<script>内容</script>为空格
-            string regex_str = "(?is)<script[^>]*>.*?</script>";//替换<script>内容</script>为空格
-            strHtml = Regex.Replace(strHtml, regex_str, "");
-
-            //regex_str="<script type=\\s*[^>]*>[^<]*?</script>";//替换<style>内容</style>为空格
-            regex_str = "(?is)<style[^>]*>.*?</style>";//替换<style>内容</style>为空格
-            strHtml = Regex.Replace(strHtml, regex_str, "");
-
-            //regex_str = "(&nbsp;)+";//替换&nbsp;为空格
-            regex_str = "(?i)&nbsp;";//替换&nbsp;为空格
-            strHtml = Regex.Replace(strHtml, regex_str, " ");
-
-            //regex_str = "(\r\n)*";//替换\r\n为空
-            regex_str = @"[\r\n]*";//替换\r\n为空
-            strHtml = Regex.Replace(strHtml, regex_str, "", RegexOptions.IgnoreCase);
-
-            //regex_str = "<[^<]*>";//替换Html标签为空
-            regex_str = "<[^<>]*>";//替换Html标签为空
-            strHtml = Regex.Replace(strHtml, regex_str, "");
-
-            //regex_str = "\n*";//替换\n为空
-            regex_str = @"\n*";//替换\n为空
-            strHtml = Regex.Replace(strHtml, regex_str, "", RegexOptions.IgnoreCase);
-
-            //可以这样
-            regex_str = "\t*";//替换\t为空
-            strHtml = Regex.Replace(strHtml, regex_str, "", RegexOptions.IgnoreCase);
-            //可以
-            regex_str = "'";//替换'为’
-            strHtml = Regex.Replace(strHtml, regex_str, "’", RegexOptions.IgnoreCase);
-
-            //可以
-            regex_str = " +";//替换若干个空格为一个空格
-            strHtml = Regex.Replace(strHtml, regex_str, "  ", RegexOptions.IgnoreCase);
-
-            Regex regex = new Regex("<.+?>", RegexOptions.IgnoreCase);
-
-            string strOutput = regex.Replace(strHtml, "");//替换掉"<"和">"之间的内容
-            strOutput = strOutput.Replace("<", ""); strOutput = strOutput.Replace(">", "");
-            strOutput = strOutput.Replace("&nbsp;", "");
-
-
-            return strOutput;
-        }
-
-
-
-
-
-        /// <summary>
-        /// 取字符串左侧多少个字符，如果超出字符串长度，则直接返回字符串
+        /// Get count of chars start left.If param count is bigger than length of string ,return string direct.
         /// </summary>
         /// <param name="s"></param>
         /// <param name="count"></param>
@@ -291,13 +183,14 @@ namespace System
         }
 
         /// <summary>
-        /// 取字符串右侧多少个字符，如果超出字符串长度，则直接返回字符串
+        /// Get count of chars start right.If param count is bigger than length of string ,return string direct.
         /// </summary>
         /// <param name="s"></param>
         /// <param name="count"></param>
         /// <returns></returns>
         public static string Right(this string s, int count)
         {
+            
             s = s.GetString();
             int startindex = 0;
             if (s.Length > count)
@@ -312,61 +205,7 @@ namespace System
             return s.Substring(startindex, count);
         }
 
-        //--------------2012-11-21 XYC添加 --------------------------------
-
-        /// <summary>
-        /// 去掉最尾部一个字符
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        public static string CutTail(this string s)
-        {
-            if (s.Length > 0)
-                return s.Substring(0, s.Length - 1);
-            else
-                return "";
-        }
-
-        /// <summary>
-        /// 去掉首部尾部各一个字符
-        /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
-        public static string CutHeadAndTail(this string s)
-        {
-            if (s.Length >= 2)
-            {
-                return s.Substring(1, s.Length - 2).CutTail();
-            }
-            else
-            {
-                return "";
-            }
-        }
-
-        /// <summary>
-        /// 字符串截取
-        /// </summary>
-        /// <param name="str"></param>
-        /// <param name="len"></param>
-        /// <param name="tail"></param>
-        /// <returns></returns>
-        public static string CutStr(this string str, int len, string tail)
-        {
-            str = str.Replace("?", "^");
-            byte[] aArr = System.Text.Encoding.Default.GetBytes(str);
-            len = len * 2;
-            if (aArr.Length > len)
-            {
-                str = System.Text.Encoding.Default.GetString(aArr, 0, len).Replace("?", "").Replace("^", "?");
-                return str + tail;
-
-            }
-            else
-            {
-                return str;
-            }
-        }
+       
 
     }
 }
