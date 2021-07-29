@@ -6,7 +6,7 @@ using System.Text;
 namespace System
 {
     /// <summary>
-    /// double
+    /// Double Extends
     /// </summary>
     public static class ExtDouble
     {

@@ -7,9 +7,6 @@ namespace System
 {
     public static class ExtStruct
     {
-        //public static struct Get(this struct s)
-        //{
-        //    return "";
-        //}
+        
     }
 }

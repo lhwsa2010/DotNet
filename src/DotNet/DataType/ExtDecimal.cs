@@ -6,7 +6,7 @@ using System.Text;
 namespace System
 {
     /// <summary>
-    /// decimal
+    /// Decimal Extends
     /// </summary>
     public static class ExtDecimal
     {

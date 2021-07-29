@@ -6,7 +6,7 @@ using System.Text;
 namespace System
 {
     /// <summary>
-    /// string Extends
+    /// String Extends
     /// </summary>
     public static class ExtString
     {
