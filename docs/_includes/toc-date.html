@@ -32,12 +32,12 @@
 
 
             
-            {% assign mydocs = site.documents | group_by: 'category' %}
+            {% assign mydocs = site.documents | group_by: 'category'|reverse %}
             {% for cat in mydocs %}
            
             <i style="font-size: 1.4rem;margin-left: 6px;color: #888;">{{ cat.name }}</i>
             
-            {% assign posts = cat.items | sort: 'order' %}
+            {% assign posts = cat.items | sort: 'order','last' %}
             {% for post in posts %}
                 {% if page.url == post.url %}
                 <li class="chapter active" data-level="1.2" data-path="{{site.baseurl}}{{post.url}}">

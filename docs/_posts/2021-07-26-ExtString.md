@@ -1,7 +1,7 @@
 ---
 title: ExtString
 author: 骆宏伟
-date: 2099-01-01
+date: 2021-07-26
 category: DataType
 layout: post
 ---
