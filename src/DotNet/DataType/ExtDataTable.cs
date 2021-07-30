@@ -10,7 +10,7 @@ namespace System
     public static class ExtDataTable
     {
         /// <summary>
-        /// 替换dbnull
+        /// replace dbnull
         /// </summary>
         /// <param name="t"></param>
         /// <returns></returns>
@@ -39,10 +39,9 @@ namespace System
         }
 
         /// <summary>
-        /// 根据传入的排序条件讲datatable排序
+        /// sort the datatable order by param sort
         /// </summary>
-        /// <param name="dt"></param>
-        /// <param name="sort">id desc或者 id 等</param>
+        /// <param name="sort">i.e:id desc</param>
         /// <returns></returns>
         public static DataTable OrderBy(this DataTable dt, string sort)
         {
@@ -52,9 +51,8 @@ namespace System
         }
 
         /// <summary>
-        /// 返回符合条件的数据
+        /// filter the data
         /// </summary>
-        /// <param name="dt"></param>
         /// <param name="filter"></param>
         /// <returns></returns>
         public static DataTable Where(this DataTable dt, string filter)
@@ -64,11 +62,8 @@ namespace System
             return dv.ToTable();
         }
 
-
-        //----------------------2012-11-21 XYC添加------------------------------------------
-
         /// <summary>
-        /// 返回表第一行第一列的值
+        /// return the first column of first row data.If has not data,return null.
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
@@ -85,9 +80,8 @@ namespace System
         }
 
         /// <summary>
-        /// 返回表第一行第一列的值 int型 用于获取分页时的recordcount
+        /// return the first column of first row data,and convert to int.If has not data,return 0.
         /// </summary>
-        /// <param name="dt"></param>
         /// <returns></returns>
         public static int Rows00Int(this DataTable dt)
         {
@@ -102,17 +96,17 @@ namespace System
         }
 
         /// <summary>
-        /// 返回datatable的第M行第N列
+        /// return the N'th column of M'th row data.If has not data,return null.
         /// </summary>
         /// <param name="dt">datatable</param>
-        /// <param name="M">第M行</param>
-        /// <param name="N">N为列数</param>
+        /// <param name="M">index of row</param>
+        /// <param name="N">index of column</param>
         /// <returns></returns>
-        public static object RowsMN(this  DataTable dt, int M, int N)
+        public static object RowsMN(this  DataTable dt, int indexOfRow, int indexOfColumn)
         {
-            if (dt.Rows.Count > M && dt.Columns.Count > N)
+            if (dt.Rows.Count > indexOfRow && dt.Columns.Count > indexOfColumn)
             {
-                return dt.Rows[M][N];
+                return dt.Rows[indexOfRow][indexOfColumn];
             }
             else
             {
@@ -121,17 +115,16 @@ namespace System
         }
 
         /// <summary>
-        /// 返回datatable的第M行第N列
+        /// return the speical name of column of M'th row data.If has not data,return null. 
         /// </summary>
-        /// <param name="dt">datatable</param>
-        /// <param name="M">第M行</param>
-        /// <param name="N">N为列名</param>
+        /// <param name="M">index of row</param>
+        /// <param name="N">column name</param>
         /// <returns></returns>
-        public static object RowsMN(this DataTable dt, int M, string N)
+        public static object RowsMN(this DataTable dt, int indexOfRow, string columnName)
         {
-            if (dt.Rows.Count > M && dt.Columns.Contains(N))
+            if (dt.Rows.Count > indexOfRow && dt.Columns.Contains(columnName))
             {
-                return dt.Rows[M][N];
+                return dt.Rows[indexOfRow][columnName];
             }
             else
             {
@@ -140,27 +133,36 @@ namespace System
         }
 
 
-
-        public static DataTable Skip(this DataTable dt, int count)
+        /// <summary>
+        /// return the data,skip the num rows.If row count is less than num,return empty table.
+        /// </summary>
+        /// <param name="num">num rows</param>
+        /// <returns></returns>
+        public static DataTable Skip(this DataTable dt, int num)
         {
             DataTable table = dt.Copy();
-            if (table.Rows.Count <= count)
+            if (table.Rows.Count <= num)
             {
                 table.Clear();
                 return table;
             }
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < num; i++)
             {
                 table.Rows.RemoveAt(0);
             }
             return table;
         }
 
-        public static DataTable Take(this DataTable dt, int count)
+        /// <summary>
+        /// Take the num rows of datatable.
+        /// </summary>
+        /// <param name="num">num rows</param>
+        /// <returns></returns>
+        public static DataTable Take(this DataTable dt, int num)
         {
             DataTable table = dt.Copy();
-            int num = table.Rows.Count;
-            for (int i = count; i < num; i++)
+            int count = table.Rows.Count;
+            for (int i = num; i < count; i++)
             {
                 table.Rows.RemoveAt(count);
             }
