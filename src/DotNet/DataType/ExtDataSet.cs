@@ -2,17 +2,17 @@
 using System.Data;
 using System.IO;
 
-namespace System
+namespace System.Data
 {
     /// <summary>
-    /// DataSet
+    /// DataSet Extends
     /// </summary>
     public static class ExtDataSet
     {
         /// <summary>
-        /// 去掉dbnull
+        /// replace dbnull
         /// </summary>
-        /// <param name="ds">dataset对象</param>
+        /// <param name="ds">dataset</param>
         /// <returns></returns>
         public static DataSet ReplaceDbNull(this DataSet ds)
         {
