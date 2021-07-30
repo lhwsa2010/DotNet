@@ -32,7 +32,7 @@
 
 
             
-            {% assign mydocs = site.documents | group_by: 'category'|reverse %}
+            {% assign mydocs = site.documents | group_by: 'category' %}
             {% for cat in mydocs %}
            
             <i style="font-size: 1.4rem;margin-left: 6px;color: #888;">{{ cat.name }}</i>
