@@ -1,0 +1,40 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.1/DotNet.dll"
+
+#!csharp
+
+using System;
+using System.ComponentModel;
+
+#!csharp
+
+public enum Color
+{
+    [Description("#4CAF50")]
+    Success=1,
+    [Description("#dc3545")]
+    Danger=2,
+    [Description("#007bff")]
+    Primary=3,
+    [Description("#ffc107")]
+    Warning=4,
+    [Description("#17a2b8")]
+    Info=5
+}
+
+#!csharp
+
+Color.Danger.GetDescription()
+
+#!csharp
+
+Color.Warning.Parse<Color>("Primary",false)
+
+#!csharp
+
+Color.Warning.Parse<Color>("1",false)
+
+#!csharp
+
+Color.Danger

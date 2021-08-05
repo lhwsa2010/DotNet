@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 
-namespace System
+namespace System.Reflection
 {
     public static class ExtAssembly
     {
+        /// <summary>
+        /// Get assembly attribute
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="assembly"></param>
+        /// <returns></returns>
         public static T GetAssemblyAttribute<T>(this Assembly assembly) where T : Attribute
         {
             // Get attributes of this type.
