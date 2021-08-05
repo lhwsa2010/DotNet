@@ -29,11 +29,11 @@ Color.Danger.GetDescription()
 
 #!csharp
 
-Color.Warning.Parse<Color>("Primary",false)
+"Primary".Parse<Color>()
 
 #!csharp
 
-Color.Warning.Parse<Color>("1",false)
+"1".Parse<Color>()
 
 #!csharp
 
