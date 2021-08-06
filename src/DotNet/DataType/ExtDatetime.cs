@@ -35,7 +35,7 @@ namespace System
         /// <param name="dt">传入的时间</param>
         /// <param name="br">默认为false不换行，true换行</param>
         /// <returns>br=false格式：2009-09-09 br 12:30 星期三</returns>
-        public static string FormatCN(this DateTime dt, bool br=false)
+        public static string FormatCN(this DateTime dt, bool br=default)
         {
             DateTime now = DateTime.Now;
             DateTime date = dt.Date;

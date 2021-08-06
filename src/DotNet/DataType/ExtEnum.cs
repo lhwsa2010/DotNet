@@ -14,7 +14,7 @@ namespace System
         /// <typeparam name="T"></typeparam>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static T Parse<T>(this string value,bool ignoreCase=true)where T:Enum
+        public static T Parse<T>(this string value,bool ignoreCase=default)where T:Enum
         {
             if (Enum.TryParse(typeof(T), value,ignoreCase,out object result))
                 return (T)result;

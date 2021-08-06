@@ -42,7 +42,7 @@ namespace System
         /// <param name="i">nullable</param>
         /// <param name="defaultvalue">defaultvalue</param>
         /// <returns></returns>
-        public static int GetInt(this int? i, int defaultvalue=0)
+        public static int GetInt(this int? i, int defaultvalue=default)
         {
             return i ?? defaultvalue;
         }

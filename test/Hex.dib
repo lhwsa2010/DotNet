@@ -1,0 +1,20 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.1/DotNet.dll"
+
+#!csharp
+
+using DotNet.Hex;
+
+#!csharp
+
+string s="1234567890abcdef";
+
+#!csharp
+
+byte[] bytes=s.FromHex();
+bytes
+
+#!csharp
+
+bytes.ToHex()

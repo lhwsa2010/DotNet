@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace System
+namespace DotNet.Hex
 {
+    /// <summary>
+    /// Hex
+    /// </summary>
     public static class Hex
     {
+        /// <summary>
+        /// Convert hex string to byte array.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
         public static byte[] FromHex(this string s)
         {
             return Enumerable.Range(0, s.Length)
@@ -14,6 +22,12 @@ namespace System
                              .Select(x => Convert.ToByte(s.Substring(x, 2), 16))
                              .ToArray();
         }
+
+        /// <summary>
+        /// Convert byte array to hex string.
+        /// </summary>
+        /// <param name="bytes"></param>
+        /// <returns></returns>
 
         public static string ToHex(this byte[] bytes)
         {
