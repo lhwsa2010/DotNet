@@ -1,0 +1,19 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.0/DotNet.dll"
+
+#!csharp
+
+using DotNet.Tool;
+
+#!csharp
+
+string s="最新百强县榜单谁在崛起谁掉队了";
+
+#!csharp
+
+Hanzi.ToPinyin(s)
+
+#!csharp
+
+Hanzi.GetFirstCodes(s)

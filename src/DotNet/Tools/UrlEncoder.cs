@@ -3,12 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace System
+namespace DotNet.Tool
 {
-    internal static class UrlEncoder
+    /// <summary>
+    /// UrlEncoder
+    /// </summary>
+    public static class UrlEncoder
     {
         private const string unreservedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~.-_";
 
+        /// <summary>
+        /// Encode url.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static string Encode(string value)
         {
             if (value == null)
@@ -27,6 +35,12 @@ namespace System
 
             return sb.ToString();
         }
+
+        /// <summary>
+        /// Decode url.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
 
         public static string Decode(string value)
         {

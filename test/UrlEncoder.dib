@@ -1,0 +1,23 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.0/DotNet.dll"
+
+#!csharp
+
+string url="http://localhost:90/api/user?name=la&age=12";
+
+#!csharp
+
+using DotNet.Tool;
+
+#!csharp
+
+UrlEncoder.Encode(url)
+
+#!csharp
+
+string ss=UrlEncoder.Encode(url);
+
+#!csharp
+
+UrlEncoder.Decode(ss)

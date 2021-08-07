@@ -14,13 +14,13 @@ namespace System
         /// <typeparam name="T"></typeparam>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static T Parse<T>(this string value,bool ignoreCase=default)where T:Enum
+        public static T Parse<T>(this string value,bool ignoreCase=default)where T:struct
         {
-            if (Enum.TryParse(typeof(T), value,ignoreCase,out object result))
+            if (Enum.TryParse<T>(value,ignoreCase,out T result))
                 return (T)result;
             return default(T);
         }
-
+        
         /// <summary>
         /// Get enum description. i.e:[Description("xx")]
         /// </summary>

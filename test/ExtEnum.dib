@@ -1,6 +1,6 @@
 #!csharp
 
-#r "../src/DotNet/bin/Debug/netstandard2.1/DotNet.dll"
+#r "../src/DotNet/bin/Debug/netstandard2.0/DotNet.dll"
 
 #!csharp
 

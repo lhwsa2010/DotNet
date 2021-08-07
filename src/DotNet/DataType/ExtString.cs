@@ -49,14 +49,12 @@ namespace System
         /// <returns></returns>
         public static bool GetBool(this string s)
         {
-            return s switch
-            {
-                null => false,
-                "" => false,
-                "0" => false,
-                string value when value.Equals("false", StringComparison.OrdinalIgnoreCase) => false,
-                _ => true
-            };
+            if (s == null)
+                return false;
+            if (s == "" || s == "0" || s.Equals("false", StringComparison.OrdinalIgnoreCase))
+                return false;
+            return true;
+
         }
 
         /// <summary>

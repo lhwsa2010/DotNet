@@ -81,19 +81,17 @@ namespace System
         public static string ReadFile(string path)
         {
             StreamReader strm = null;
-            string html = string.Empty;
+            string text = string.Empty;
             try
             {
                 strm = new StreamReader(path, Encoding.Default);
                 string sline;
-                string buf = "";
                 do
                 {
                     sline = strm.ReadLine();
-                    buf += sline;
+                    text += sline;
                 } while (sline != null);
 
-                html = buf;
             }
             catch
             {
@@ -103,7 +101,7 @@ namespace System
             {
                 strm.Close();
             }
-            return html;
+            return text;
         }
     }
 }
