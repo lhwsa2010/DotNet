@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Tools\Cfg.cs" />
     <Compile Remove="Tools\Hanzi.cs" />
   </ItemGroup>
 

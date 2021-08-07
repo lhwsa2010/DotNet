@@ -5,6 +5,9 @@ using System.Text;
 
 namespace System.Reflection
 {
+    /// <summary>
+    /// Assembly Extends
+    /// </summary>
     public static class ExtAssembly
     {
         /// <summary>
