@@ -1,0 +1,35 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.0/DotNet.dll"
+
+#!csharp
+
+using System.Net;
+
+#!csharp
+
+WebClient webClient = new WebClient();
+string s=webClient.DownloadString($"https://lhwsa2010.github.io/DotNet");
+
+#!csharp
+
+s.Match("<nav role=\"navigation\">", "</nav>")
+
+#!csharp
+
+s.Matches("<li ","</li>")
+
+#!csharp
+
+s.Matches("<a href=\"[\\d\\D].*?>","</a>")
+
+#!csharp
+
+s.RegReplace("<title>[\\d\\D].*?</title>","This is a New Title")
+
+#!csharp
+
+s.RegReplace("(?<=<title>)[\\d\\D].*?(?=</title>)",
+                match=> {
+                    return match.Value+ " append suffix";
+                })
