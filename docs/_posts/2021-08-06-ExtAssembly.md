@@ -9,7 +9,7 @@ layout: post
 ## Method
 
 #### GetAssemblyAttribute
-Get assembly attribute
+Get assembly attribute value.
 ```
 
 ```

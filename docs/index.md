@@ -22,6 +22,12 @@ layout: post
 ```
 Install-Package DotNetFool
 ```
+### Dependencies
++ *System.Configuration.ConfigurationManager*:
+> The tool *Cfg* depends on it.
++ *System.Drawing.Common*:
+> The tool *ProcessImage* depends on it.
+
 
 ## About
 ---

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Data;
-using System.IO;
-
-namespace System.Data
+﻿namespace System.Data
 {
     /// <summary>
     /// DataSet Extends

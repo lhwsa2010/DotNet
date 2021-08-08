@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
-
-namespace System.Reflection
+﻿namespace System.Reflection
 {
     /// <summary>
     /// Assembly Extends
@@ -11,7 +6,7 @@ namespace System.Reflection
     public static class ExtAssembly
     {
         /// <summary>
-        /// Get assembly attribute
+        /// Get assembly attribute value.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="assembly"></param>
