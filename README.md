@@ -13,12 +13,17 @@
 ```
 Install-Package DotNetFool
 ```
+## Dependencies
++ *System.Configuration.ConfigurationManager*:
+> The tool *Cfg* depends on it.
++ *System.Drawing.Common*:
+> The tool *ProcessImage* depends on it.
 
 ## Docs
 
-[docs](https://lhwsa2010.github.io/DotNet)
+[Goto](https://lhwsa2010.github.io/DotNet)
 
-## Usage
+## Usage i.e
 
 #### GetInt Method
 + bool convert to int

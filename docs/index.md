@@ -22,7 +22,7 @@ layout: post
 ```
 Install-Package DotNetFool
 ```
-### Dependencies
+## Dependencies
 + *System.Configuration.ConfigurationManager*:
 > The tool *Cfg* depends on it.
 + *System.Drawing.Common*:
