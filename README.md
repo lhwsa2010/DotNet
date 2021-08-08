@@ -5,7 +5,7 @@
 [![Nuget](https://img.shields.io/nuget/v/dotnetfool)](https://www.nuget.org/packages/DotNetFool)
 
 <div align=center>
-<img src="https://github.com/lhwsa2010/DotNet/blob/main/logo.png">
+<img src="{{site.baseurl}}/gitbook/images/apple-touch-icon-precomposed-152.png">
 </div>
 
 这是一个.net公共类库，提供了各种常用操作，如：常用类型变量之间互转等
