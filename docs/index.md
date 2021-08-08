@@ -18,7 +18,7 @@ layout: post
 
 ## Installation
 ---
-*DotNetFool* is available as NuGet Package. Type the following command into NuGet Package Manager Console window to install it:
+***DotNetFool*** is available as NuGet Package. Type the following command into NuGet Package Manager Console window to install it:
 ```
 Install-Package DotNetFool
 ```

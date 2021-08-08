@@ -1,4 +1,4 @@
-# DotNetFool ![Build Status](https://github.com/lhwsa2010/DotNet/actions/workflows/build.yml/badge.svg)
+# ![alt logo](https://github.com/lhwsa2010/DotNet/logo.png) DotNetFool ![Build Status](https://github.com/lhwsa2010/DotNet/actions/workflows/build.yml/badge.svg)
 
 [![license](http://img.shields.io/badge/license-MIT-green.svg)](https://github.com/lhwsa2010/DotNet/blob/main/LICENSE)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/lhwsa2010/dotnet)](https://github.com/lhwsa2010/dotnet/releases)
@@ -9,7 +9,7 @@
 
 
 ## Installation
-*DotNetFool* is available as NuGet Package. Type the following command into NuGet Package Manager Console window to install it:
+***DotNetFool*** is available as NuGet Package. Type the following command into NuGet Package Manager Console window to install it:
 ```
 Install-Package DotNetFool
 ```
