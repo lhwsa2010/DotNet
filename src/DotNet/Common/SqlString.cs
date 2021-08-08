@@ -12,7 +12,20 @@ namespace System
         /// <returns></returns>
         public static string FilterSql(this string s)
         {
-            return s.Replace("--", "").Replace("'", "").Replace("delete ", "delete").Replace("update ", "update").Replace("select ", "select");
+            if (s == null)
+                return "";
+            s = Regex.Replace(s, "--", "——", RegexOptions.IgnoreCase);
+            s = Regex.Replace(s, "'", "‘", RegexOptions.IgnoreCase);
+            s = Regex.Replace(s, @"\s+", " ");
+            s = Regex.Replace(s, "delete ", "delete", RegexOptions.IgnoreCase);
+            s = Regex.Replace(s, "update ", "update", RegexOptions.IgnoreCase);
+            s = Regex.Replace(s, "select ", "select", RegexOptions.IgnoreCase);
+            s = Regex.Replace(s, "union ", "union", RegexOptions.IgnoreCase);
+            s = Regex.Replace(s, "create ", "create", RegexOptions.IgnoreCase);
+            s = Regex.Replace(s, "drop ", "drop", RegexOptions.IgnoreCase);
+            s = Regex.Replace(s, "alter ", "alter", RegexOptions.IgnoreCase);
+            s = Regex.Replace(s, ";", "", RegexOptions.IgnoreCase);
+            return s;
         }
 
         /// <summary>
