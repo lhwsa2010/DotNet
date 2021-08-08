@@ -5,7 +5,7 @@
 [![Nuget](https://img.shields.io/nuget/v/dotnetfool)](https://www.nuget.org/packages/DotNetFool)
 
 <div align="center">
-  ![alt logo](https://github.com/lhwsa2010/DotNet/blob/main/logo.png)
+  <img src="https://github.com/lhwsa2010/DotNet/blob/main/logo.png" />
 </div>
 
 
