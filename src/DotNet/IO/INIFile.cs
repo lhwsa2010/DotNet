@@ -5,15 +5,22 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.IO;
 
-namespace System
+namespace DotNet.Tool
 {
+    /// <summary>
+    /// Only used on windows.
+    /// </summary>
     public class INIFile
     {
-        public string path;
+        private string _path;
 
+        /// <summary>
+        /// Initializes a new instance of INIFile.
+        /// </summary>
+        /// <param name="INIPath">ini file path</param>
         public INIFile(string INIPath)
         {
-            path = INIPath;
+            _path = INIPath;
         }
 
         [DllImport("kernel32")]
@@ -26,38 +33,44 @@ namespace System
         private static extern int GetPrivateProfileString(string section, string key, string defVal, Byte[] retVal, int size, string filePath);
 
         /// <summary>
-        /// 写INI文件
+        /// Sets a value for a given key.
         /// </summary>
-        /// <param name="Section"></param>
-        /// <param name="Key"></param>
-        /// <param name="Value"></param>
-        public void IniWriteValue(string Section, string Key, string Value)
+        /// <param name="section">section</param>
+        /// <param name="key">key</param>
+        /// <param name="value">value</param>
+        public void IniWriteValue(string section, string key, string value)
         {
-            WritePrivateProfileString(Section, Key, Value, this.path);
+            WritePrivateProfileString(section, key, value, _path);
         }
 
         /// <summary>
-        /// 读取INI文件
+        /// Attempts to find a value with the given key.
         /// </summary>
-        /// <param name="Section"></param>
-        /// <param name="Key"></param>
+        /// <param name="section">section</param>
+        /// <param name="key">key</param>
         /// <returns></returns>
-        public string IniReadValue(string Section, string Key)
+        public string IniReadValue(string section, string key)
         {
             StringBuilder temp = new StringBuilder(255);
-            int i = GetPrivateProfileString(Section, Key, "", temp, 255, this.path);
+            int i = GetPrivateProfileString(section, key, "", temp, 255, _path);
             return temp.ToString();
         }
 
-        public byte[] IniReadValues(string section, string key)
+        /// <summary>
+        /// Attempts to find a value with the given key.
+        /// </summary>
+        /// <param name="section">section</param>
+        /// <param name="key">key</param>
+        /// <returns></returns>
+        public byte[] IniReadValueByte(string section, string key)
         {
             byte[] temp = new byte[255];
-            int i = GetPrivateProfileString(section, key, "", temp, 255, this.path);
+            int i = GetPrivateProfileString(section, key, "", temp, 255,_path);
             return temp;
         }
 
         /// <summary>
-        /// 删除ini文件下所有段落
+        /// Attempts to remove all values.(Not Work)
         /// </summary>
         public void ClearAllSection()
         {
@@ -65,43 +78,14 @@ namespace System
         }
 
         /// <summary>
-        /// 删除ini文件下personal段落下的所有键
+        /// Attempts to remove all values with the given section.
         /// </summary>
-        /// <param name="Section"></param>
-        public void ClearSection(string Section)
+        /// <param name="section">section</param>
+        public void ClearSection(string section)
         {
-            IniWriteValue(Section, null, null);
+            IniWriteValue(section, null, null);
         }
 
-        /// <summary>
-        /// 读取文件流
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        public static string ReadFile(string path)
-        {
-            StreamReader strm = null;
-            string text = string.Empty;
-            try
-            {
-                strm = new StreamReader(path, Encoding.Default);
-                string sline;
-                do
-                {
-                    sline = strm.ReadLine();
-                    text += sline;
-                } while (sline != null);
-
-            }
-            catch
-            {
-                strm.Close();
-            }
-            finally
-            {
-                strm.Close();
-            }
-            return text;
-        }
+        
     }
 }

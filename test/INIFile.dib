@@ -1,0 +1,27 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.0/DotNet.dll"
+
+#!csharp
+
+using System.IO;
+using DotNet.Tool;
+
+#!csharp
+
+string path = Path.Combine(Environment.CurrentDirectory, "app.ini");
+INIFile app = new INIFile(path);
+path
+
+#!csharp
+
+app.IniReadValue("User", "name")
+
+#!csharp
+
+app.ClearSection("Class")
+
+#!csharp
+
+Random random = new Random(DateTime.UtcNow.Millisecond);
+app.IniWriteValue("random", random.Next(100).ToString(), random.Next(100).ToString());
