@@ -11,9 +11,9 @@ layout: post
 [![license](http://img.shields.io/badge/license-MIT-green.svg)](https://github.com/lhwsa2010/DotNet/blob/main/LICENSE)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/lhwsa2010/dotnet)](https://github.com/lhwsa2010/dotnet/releases)
 [![Nuget](https://img.shields.io/nuget/v/dotnetfool)](https://www.nuget.org/packages/DotNetFool)
-<div align="center">
-  <img src="https://t7.baidu.com/it/u=1819248061,230866778&fm=193&f=GIF" />
-</div>
+
+<center>![alt logo](https://github.com/lhwsa2010/DotNet/blob/main/logo.png)</center>
+  
 这是一个.net公共类库，提供了各种常用操作，如：常用类型变量之间互转等
 
 
