@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="IO\INIFile.cs" />
     <Compile Remove="Tools\Cfg.cs" />
     <Compile Remove="Tools\Hanzi.cs" />
   </ItemGroup>
@@ -31,6 +32,7 @@
     <Folder Include="Control\" />
     <Folder Include="Form\" />
     <Folder Include="Images\" />
+    <Folder Include="IO\" />
   </ItemGroup>
 
   <ItemGroup>
