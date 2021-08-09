@@ -1,0 +1,11 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.0/DotNet.dll"
+
+#!csharp
+
+using DotNet.Tool;
+
+#!csharp
+
+Localhost.GetIP()

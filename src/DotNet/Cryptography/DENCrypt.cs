@@ -3,12 +3,12 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace DotNet.Tool
+namespace DotNet.Cryptography
 {
     /// <summary>
     /// Encrypt&Decrypt
     /// </summary>
-    public class DEncrypt
+    public class DENCrypt
     {
         /// <summary>
         /// sha1+md5

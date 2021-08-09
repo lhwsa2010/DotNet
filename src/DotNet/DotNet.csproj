@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Cryptography\RS232.cs" />
     <Compile Remove="IO\INIFile.cs" />
     <Compile Remove="Tools\Hanzi.cs" />
   </ItemGroup>

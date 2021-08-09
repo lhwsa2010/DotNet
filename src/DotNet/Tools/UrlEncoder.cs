@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
 namespace DotNet.Tool
 {
@@ -15,12 +16,12 @@ namespace DotNet.Tool
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static string Encode(string value)
+        public static string Encode(string value,string charset = "UTF-8")
         {
             if (value == null)
                 return String.Empty;
 
-            var bytes = System.Text.Encoding.UTF8.GetBytes(value);
+            var bytes = Encoding.GetEncoding(charset).GetBytes(value);
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             foreach (byte b in bytes)
             {
@@ -40,7 +41,7 @@ namespace DotNet.Tool
         /// <param name="value"></param>
         /// <returns></returns>
 
-        public static string Decode(string value)
+        public static string Decode(string value, string charset = "UTF-8")
         {
             if (value == null)
                 return String.Empty;
@@ -63,7 +64,7 @@ namespace DotNet.Tool
                 }
             }
 
-            return System.Text.Encoding.UTF8.GetString(buffer.ToArray(), 0, buffer.Count);
+            return Encoding.GetEncoding(charset).GetString(buffer.ToArray(), 0, buffer.Count);
         }
     }
 }
