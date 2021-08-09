@@ -104,4 +104,45 @@ the thumbnail iamge height.
 add the whole iamge or the size with water mark image.
 
 #### enum WatermarkPosition
-The water mark iamge position on image.LeftTop \ Left \ LeftBottom \ Top \ Center \ Bottom \ RightTop \ RightCenter \ RigthBottom.
+The water mark iamge position on image.
+```
+public enum WatermarkPosition
+{
+    /// <summary>
+    /// 左上
+    /// </summary>
+    LeftTop,
+    /// <summary>
+    /// 左中
+    /// </summary>
+    Left,
+    /// <summary>
+    /// 左下
+    /// </summary>
+    LeftBottom,
+    /// <summary>
+    /// 正上
+    /// </summary>
+    Top,
+    /// <summary>
+    /// 正中
+    /// </summary>
+    Center,
+    /// <summary>
+    /// 正下
+    /// </summary>
+    Bottom,
+    /// <summary>
+    /// 右上
+    /// </summary>
+    RightTop,
+    /// <summary>
+    /// 右中
+    /// </summary>
+    RightCenter,
+    /// <summary>
+    /// 右下
+    /// </summary>
+    RigthBottom
+}
+```
