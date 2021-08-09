@@ -8,7 +8,7 @@ layout: post
 
 ## Method
 
-#### GetAssemblyAttribute<T>
+#### GetAssemblyAttribute\<T\>
 Get assembly attribute value.
 ```
 Assembly.GetExecutingAssembly().GetAssemblyAttribute<AssemblyCompanyAttribute>()
