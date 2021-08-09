@@ -23,9 +23,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Remove="Cryptography\DESCrypt.cs" />
     <Compile Remove="Cryptography\RS232.cs" />
+    <Compile Remove="Cryptography\RSACrypt.cs" />
     <Compile Remove="IO\INIFile.cs" />
     <Compile Remove="Tools\Hanzi.cs" />
+    <Compile Remove="Tools\Pub.cs" />
+    <Compile Remove="Tools\WebUtils.cs" />
   </ItemGroup>
 
   <ItemGroup>
