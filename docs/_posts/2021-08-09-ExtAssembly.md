@@ -15,7 +15,3 @@ Assembly.GetExecutingAssembly().GetAssemblyAttribute<AssemblyCompanyAttribute>()
 Assembly.GetExecutingAssembly().GetAssemblyAttribute<AssemblyTitleAttribute>()
 Assembly.GetExecutingAssembly().GetAssemblyAttribute<AssemblyCopyrightAttribute>()
 ```
-output:
-```
-
-```
