@@ -4,6 +4,9 @@ using System.Text;
 
 namespace DotNet.Tool
 {
+    /// <summary>
+    /// undone
+    /// </summary>
     public class Pub
     {
         /// <summary>

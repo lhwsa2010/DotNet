@@ -4,6 +4,9 @@ using System.Text.RegularExpressions;
 
 namespace DotNet.Tool
 {
+    /// <summary>
+    /// undone
+    /// </summary>
     public class Hanzi
     {
         /// <summary>        

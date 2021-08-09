@@ -7,23 +7,22 @@ using System.Text.RegularExpressions;
 namespace DotNet.Tool
 {
     /// <summary>
-    /// 图片处理（生成缩略图，加水印）
+    /// Process image.
     /// </summary>
     public class ProcessImage
     {
         /// <summary>
-        /// 创建跟原图一样大小的jpg图片
+        /// Create thumbnail image has the same width and height like the original image.  
         /// </summary>
-        /// <param name="stream">file stream</param>
-        /// <param name="savepath">完整保存地址，需要server.mappath</param>
-        /// <param name="addwhite">是否填充白色（如果高度和宽度达不到生成图片的比例时，会自动在宽或者高处填充白色）</param>
+        /// <param name="stream">image stream</param>
+        /// <param name="savepath">save file path</param>
         /// <returns></returns>
-        public (bool isSuccess, string message) CreateThumbnail(Stream stream, string savepath, bool addwhite = default)
+        public (bool isSuccess, string message) CreateThumbnail(Stream stream, string savepath)
         {
             try
             {
                 Image image = Image.FromStream(stream);
-                return CreateThumbnail(image, savepath, image.Width, image.Height, addwhite);
+                return CreateThumbnail(image, savepath, image.Width, image.Height, false);
             }
             catch (Exception ex)
             {
@@ -32,13 +31,13 @@ namespace DotNet.Tool
         }
 
         /// <summary>
-        /// /创建缩略图参数
+        /// Create thumbnail image with the width and height. 
         /// </summary>
-        /// <param name="stream">file stream</param>
-        /// <param name="savepath">完整保存地址，需要server.mappath</param>
-        /// <param name="createwidth">生成图片的宽度</param>
-        /// <param name="createheight">生成图片的高度</param>
-        /// <param name="addwhite">是否填充白色（如果高度和宽度达不到生成图片的比例时，会自动在宽或者高处填充白色）</param>
+        /// <param name="stream">image stream</param>
+        /// <param name="savepath">save file path</param>
+        /// <param name="createwidth">thumbnail image width</param>
+        /// <param name="createheight">thumbnail image height</param>
+        /// <param name="addwhite">whether add white background around image,if the thumbnail image is smaller than original image.</param>
         /// <returns></returns>
         public (bool isSuccess, string message) CreateThumbnail(Stream stream, string savepath, int createwidth, int createheight, bool addwhite = default)
         {
@@ -53,12 +52,18 @@ namespace DotNet.Tool
             }
         }
 
-        public (bool isSuccess, string message) CreateThumbnail(string readpath, string savepath, bool addwhite = default)
+        /// <summary>
+        /// Create thumbnail image has the same width and height like the original image.  
+        /// </summary>
+        /// <param name="readpath">original image path</param>
+        /// <param name="savepath">save image path</param>
+        /// <returns></returns>
+        public (bool isSuccess, string message) CreateThumbnail(string readpath, string savepath)
         {
             try
             {
                 Image image = Image.FromFile(readpath);
-                return CreateThumbnail(image, savepath, image.Width, image.Height, addwhite);
+                return CreateThumbnail(image, savepath, image.Width, image.Height, false);
             }
             catch (Exception ex)
             {
@@ -67,14 +72,14 @@ namespace DotNet.Tool
         }
 
         /// <summary>
-        /// 创建缩略图
+        /// Create thumbnail image with the width and height. 
         /// </summary>
-        /// <param name="readpath">完整图片地址（包括server.mappath）</param>
-        /// <param name="savepath">完成保存地址(包括server.mappath)</param>
-        /// <param name="createwidth">生成图片的宽度</param>
-        /// <param name="createheight">生成图片的高度</param>
-        /// <param name="addwhite">是否填充白色（如果高度和宽度达不到生成图片的比例时，会自动在宽或者高处填充白色）</param>
-        /// <returns>0:创建缩略图失败，1：传入的文件格式错误，2：创建成功</returns>
+        /// <param name="readpath">original image path</param>
+        /// <param name="savepath">save image path</param>
+        /// <param name="createwidth">thumbnail image width</param>
+        /// <param name="createheight">thumbnail image height</param>
+        /// <param name="addwhite">whether add white background around image,if the thumbnail image is smaller than original image.</param>
+        /// <returns></returns>
         public (bool isSuccess, string message) CreateThumbnail(string readpath, string savepath, int createwidth, int createheight, bool addwhite = default)
         {
             try
@@ -181,15 +186,15 @@ namespace DotNet.Tool
         }
 
         /// <summary>
-        /// 添加文字水印(不支持gif，使用前最好先生成jpg)
+        /// Add water mark with text.(Do not support *.gif)
         /// </summary>
-        /// <param name="file"></param>
-        /// <param name="savepath"></param>
-        /// <param name="watermarkText"></param>
-        /// <param name="position"></param>
-        /// <param name="font"></param>
-        /// <param name="size"></param>
-        /// <param name="color"></param>
+        /// <param name="readpath">original image path</param>
+        /// <param name="savepath">save image path</param>
+        /// <param name="watermarkText">water mark text</param>
+        /// <param name="position">position</param>
+        /// <param name="font">font</param>
+        /// <param name="size">font size</param>
+        /// <param name="color">color</param>
         /// <returns></returns>
         public (bool isSuccess, string message) AddWaterText(string readpath, string savepath, string watermarkText, WatermarkPosition position, string font, int size, Color color)
         {
@@ -261,15 +266,16 @@ namespace DotNet.Tool
         }
 
         /// <summary>
-        /// 添加图片水印(不支持gif，使用前最好先生成jpg)
+        /// Add water mark with the mark image.(Do not support *.gif)
         /// </summary>
-        /// <param name="readpath">图片路径(包含完整路径,文件名及其扩展名): string</param>
-        /// <param name="watermarkpath">水印图片路径(包含完整路径,文件名及其扩展名): string</param>
-        /// <param name="transparence">水印透明度(值越高透明度越低,范围在0.0f~1.0f之间): float</param>
-        /// <param name="position">枚举 ImageManager.WatermarkPosition : ImageManager.WatermarkPosition</param>
-        /// <param name="margin">水印边距: int</param>
-        /// <param name="savepath">保存路径(包含完整路径,文件名及其扩展名): string</param>
-        /// <param name="quanju">全局打水印,true：是 false:否</param>
+        /// <param name="readpath">original image path</param>
+        /// <param name="watermarkpath">water mark image path</param>
+        /// <param name="transparence">transparence between 0.0f and 1.0f</param>
+        /// <param name="position">position</param>
+        /// <param name="margin">margin</param>
+        /// <param name="savepath">save image path</param>
+        /// <param name="global">add the whole iamge or the size with water mark image</param>
+        /// <returns></returns>
         public (bool isSuccess, string message) AddWaterMark(string readpath, string watermarkpath, float transparence, WatermarkPosition position, int margin, string savepath, bool global = default)
         {
             if (string.Compare(readpath, savepath) == 0)
@@ -293,17 +299,17 @@ namespace DotNet.Tool
         }
 
         /// <summary>
-        /// 添加图片水印(不支持gif，使用前最好先生成jpg)
+        /// Add water mark with the mark image.(Do not support *.gif)
         /// </summary>
-        /// <param name="readpath">图片路径(包含完整路径,文件名及其扩展名): string</param>
-        /// <param name="watermarkpath">水印图片路径(包含完整路径,文件名及其扩展名): string</param>
-        /// <param name="transparence">水印透明度(值越高透明度越低,范围在0.0f~1.0f之间): float</param>
-        /// <param name="position">枚举 ImageManager.WatermarkPosition : ImageManager.WatermarkPosition</param>
-        /// <param name="margin">水印边距: int</param>
-        /// <param name="savepath">保存路径(包含完整路径,文件名及其扩展名): string</param>
-        /// <param name="createwidth">创建出来的宽度</param>
-        /// <param name="createheight">创建出来的高度</param>
-        /// <param name="quanju">全局打水印,true：是 false:否</param>
+        /// <param name="readpath">original image path</param>
+        /// <param name="watermarkpath">water mark image path</param>
+        /// <param name="transparence">transparence between 0.0f and 1.0f</param>
+        /// <param name="position">position</param>
+        /// <param name="margin">margin</param>
+        /// <param name="savepath">save image path</param>
+        /// <param name="createwidth">the thumbnail image width</param>
+        /// <param name="createheight">the thumbnail iamge height</param>
+        /// <param name="global">add the whole iamge or the size with water mark image</param>
         /// <returns></returns>
         public (bool isSuccess, string message) AddWaterMark(string readpath, string watermarkpath, float transparence, WatermarkPosition position, int margin, string savepath, int createwidth, int createheight, bool global = default)
         {
@@ -564,7 +570,7 @@ namespace DotNet.Tool
         }
 
         /// <summary>
-        /// 枚举: 水印位置
+        /// The water mark iamge position on image.
         /// </summary>
         public enum WatermarkPosition
         {
@@ -605,5 +611,20 @@ namespace DotNet.Tool
             /// </summary>
             RigthBottom
         }
+
+
+        //Bitmap destBitmap = new Bitmap(width, height);
+        //Graphics g = Graphics.FromImage(destBitmap);
+        //g.Clear(Color.Transparent);
+        //        g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+        //        g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+        //        g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+        //        g.DrawImage(sourImage, new Rectangle(0, 0, width, height), 0, 0, sourImage.Width, sourImage.Height, GraphicsUnit.Pixel);
+        //        g.Dispose();
+
+        //        //压缩    
+        //        System.Drawing.Imaging.EncoderParam
+
+
     }
 }
