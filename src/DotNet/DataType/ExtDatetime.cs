@@ -80,5 +80,69 @@
 
             return res;
         }
+
+        /// <summary>
+        /// Get first day of month.
+        /// </summary>
+        /// <param name="datetime"></param>
+        /// <returns></returns>
+        public static DateTime FirstDayOfMonth(this DateTime datetime)
+        {
+            return datetime.AddDays(1 - datetime.Day).Date;
+        }
+
+        /// <summary>
+        /// Get last day of month.
+        /// </summary>
+        /// <param name="datetime"></param>
+        /// <returns></returns>
+        public static DateTime LastDayOfMonth(this DateTime datetime)
+        {
+            return new DateTime(datetime.Year, datetime.Month, datetime.DaysInMonth());
+        }
+
+        /// <summary>
+        /// Get days in month.
+        /// </summary>
+        /// <param name="datetime"></param>
+        /// <returns></returns>
+        public static int DaysInMonth(this DateTime datetime)
+        {
+            return DateTime.DaysInMonth(datetime.Year, datetime.Month);
+        }
+
+        /// <summary>
+        /// 返回日期几
+        /// </summary>
+        /// <returns></returns>
+        public static string DayOfWeekToCN(this DateTime datetime)
+        {
+            var res = "";
+            switch (datetime.DayOfWeek.ToString("D"))
+            {
+                case "0":
+                    res = "日 ";
+                    break;
+                case "1":
+                    res = "一 ";
+                    break;
+                case "2":
+                    res = "二 ";
+                    break;
+                case "3":
+                    res = "三 ";
+                    break;
+                case "4":
+                    res = "四 ";
+                    break;
+                case "5":
+                    res = "五 ";
+                    break;
+                case "6":
+                    res = "六 ";
+                    break;
+            }
+            return res;
+        }
     }
 }

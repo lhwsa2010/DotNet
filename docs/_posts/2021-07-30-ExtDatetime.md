@@ -52,3 +52,43 @@ output:
 2021-07-31 01:36 明天
 2021-07-31<br>01:36 明天
 ```
+
+#### FirstDayOfMonth
+Get first day of month.
+```
+d.FirstDayOfMonth()
+```
+output:
+```
+2021-08-01 00:00:00Z
+```
+
+#### LastDayOfMonth
+Get last day of month.
+```
+d.LastDayOfMonth()
+```
+output:
+```
+2021-08-31 00:00:00Z
+```
+
+#### DaysInMonth
+Get days in month.
+```
+d.DaysInMonth()
+```
+output:
+```
+31
+```
+
+#### DayOfWeekToCN
+返回日期几
+```
+d.DayOfWeekToCN()
+```
+output:
+```
+三
+```

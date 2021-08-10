@@ -1,6 +1,6 @@
 #!csharp
 
-#r "../src/DotNet/bin/Debug/netstandard2.1/DotNet.dll"
+#r "../src/DotNet/bin/Debug/netstandard2.0/DotNet.dll"
 
 #!csharp
 
@@ -20,3 +20,24 @@ Console.WriteLine(d.FormatCN(true));
 d=DateTime.Now.AddDays(1);
 Console.WriteLine(d.FormatCN());
 Console.WriteLine(d.FormatCN(true));
+
+#!csharp
+
+d=d.AddDays(1);
+d
+
+#!csharp
+
+d.FirstDayOfMonth()
+
+#!csharp
+
+d.LastDayOfMonth()
+
+#!csharp
+
+d.DaysInMonth()
+
+#!csharp
+
+d.DayOfWeekToCN()
