@@ -613,17 +613,87 @@ namespace DotNet.Tool
         }
 
 
-        //Bitmap destBitmap = new Bitmap(width, height);
-        //Graphics g = Graphics.FromImage(destBitmap);
-        //g.Clear(Color.Transparent);
-        //        g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-        //        g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-        //        g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-        //        g.DrawImage(sourImage, new Rectangle(0, 0, width, height), 0, 0, sourImage.Width, sourImage.Height, GraphicsUnit.Pixel);
-        //        g.Dispose();
+        /// <summary>
+        /// Zoom image.
+        /// </summary>
+        /// <param name="imgSource">image byte array.</param>
+        /// <param name="ifHeightOrWidth">base on height or width.if 1 the new image height equals size,otherwise the new image width equals size.</param>
+        /// <param name="size">the new width or height value.</param>
+        /// <param name="flag">the new iamge quality value.</param>
+        /// <returns></returns>
+        public static byte[] ZoomImage(byte[] imgSource, int ifHeightOrWidth = 1, int size = 100, int quality = 40)
+        {
+            try
+            {
+                MemoryStream stream = new MemoryStream(imgSource);
+                System.Drawing.Image sourImage = System.Drawing.Image.FromStream(stream);
+                ImageFormat tFormat = sourImage.RawFormat;
+                int width = 0, height = 0;
+                //按比例缩放
+                int sourWidth = sourImage.Width;
+                int sourHeight = sourImage.Height;
 
-        //        //压缩    
-        //        System.Drawing.Imaging.EncoderParam
+                //以高为准,等比缩放
+                if (ifHeightOrWidth == 1)
+                {
+                    height = size;
+                    width = height * sourWidth / sourHeight;
+                }
+                //以宽为准 等比缩放
+                else
+                {
+                    width = size;
+                    height = width * sourHeight / sourWidth;
+                }
+
+                //缩放
+                Bitmap destBitmap = new Bitmap(width, height);
+                Graphics g = Graphics.FromImage(destBitmap);
+                g.Clear(Color.Transparent);
+                g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.DrawImage(sourImage, new Rectangle(0, 0, width, height), 0, 0, sourImage.Width, sourImage.Height, GraphicsUnit.Pixel);
+                g.Dispose();
+
+                //压缩    
+                System.Drawing.Imaging.EncoderParameters encoderParams = new System.Drawing.Imaging.EncoderParameters();
+                long[] qualityArray = new long[1];
+                qualityArray[0] = quality;
+                System.Drawing.Imaging.EncoderParameter encoderParam = new System.Drawing.Imaging.EncoderParameter(System.Drawing.Imaging.Encoder.Quality, qualityArray);
+                encoderParams.Param[0] = encoderParam;
+
+                ImageCodecInfo[] arrayICI = ImageCodecInfo.GetImageEncoders();
+                ImageCodecInfo jpegICIinfo = null;
+                for (int x = 0; x < arrayICI.Length; x++)
+                {
+                    if (arrayICI[x].FormatDescription.Equals("JPEG"))
+                    {
+                        jpegICIinfo = arrayICI[x];
+                        break;
+                    }
+                }
+
+                MemoryStream outSm = new MemoryStream();
+                if (jpegICIinfo != null)
+                {
+                    destBitmap.Save(outSm, jpegICIinfo, encoderParams);
+                }
+                else
+                {
+                    destBitmap.Save(outSm, tFormat);
+                }
+                sourImage.Dispose();
+                var s = outSm.GetBuffer().Length;
+                return outSm.GetBuffer();
+
+            }
+            catch
+            {
+                return imgSource;
+            }
+
+        }
 
 
     }

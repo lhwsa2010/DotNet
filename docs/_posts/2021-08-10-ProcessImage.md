@@ -146,3 +146,14 @@ public enum WatermarkPosition
     RigthBottom
 }
 ```
+
+#### ZoomImage
+Zoom image.
++ imgSource:
+image byte array.
++ ifHeightOrWidth:
+base on height or width.if 1 the new image height equals size,otherwise the new image width equals size.
++ size:
+the new width or height value.
++ quality:
+the new iamge quality value.
