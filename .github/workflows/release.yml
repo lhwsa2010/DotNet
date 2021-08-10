@@ -26,12 +26,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: prepversion
-        id: prep
-        run: |
-          VERSION=${{github.event.release.tag_name}}
-          ver=$(echo $VERSION | sed -e 's/^v//')
-          echo ::set-output name=version::$ver
+      - uses: actions/checkout@v2
+      # - name: prepversion
+      #   id: prep
+      #   run: |
+      #     VERSION=${{github.event.release.tag_name}}
+      #     ver=$(echo $VERSION | sed -e 's/^v//')
+      #     echo ::set-output name=version::$ver
       - name: Publish the package to GPR
         id: publish_nuget
         uses: rohith/publish-nuget@v2.5.5
@@ -39,4 +40,4 @@ jobs:
           PROJECT_FILE_PATH: src/DotNet/DotNet.csproj
           NUGET_KEY: ${{secrets.NUGET_API_SECRET}}
           TAG_FORMAT: v*
-          PACKAGE_NAME: DotNetFool.${{steps.prep.outputs.version}}
+          PACKAGE_NAME: DotNetFool.${{github.event.release.tag_name}}
