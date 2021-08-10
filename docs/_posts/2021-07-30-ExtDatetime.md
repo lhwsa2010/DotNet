@@ -84,7 +84,7 @@ output:
 ```
 
 #### DayOfWeekToCN
-返回日期几
+返回汉字星期几
 ```
 d.DayOfWeekToCN()
 ```

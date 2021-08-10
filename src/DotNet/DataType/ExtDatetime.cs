@@ -112,7 +112,7 @@
         }
 
         /// <summary>
-        /// 返回日期几
+        /// 返回星期几
         /// </summary>
         /// <returns></returns>
         public static string DayOfWeekToCN(this DateTime datetime)
