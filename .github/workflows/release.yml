@@ -3,16 +3,8 @@
 name: release
 
 on:
-<<<<<<< HEAD
-  push:
-    branches:
-      - release
-    tags:
-      - 'v*'
-=======
   release:
     types: [published]
->>>>>>> main
 
 jobs:
   build:
@@ -28,17 +20,6 @@ jobs:
         run: dotnet build --configuration Release
       - name: Create the package
         run: dotnet pack --configuration Release
-<<<<<<< HEAD
-#      - name: Publish the package to GPR
-#        id: publish_nuget
-#        uses: rohith/publish-nuget@v2.5.5
-#        with:
-#          PROJECT_FILE_PATH: src/DotNet/DotNet.csproj
-#          NUGET_KEY: ${{secrets.NUGET_API_SECRET}}
-##          NUGET_SOURCE: https://api.nuget.org/
-#          TAG_FORMAT: v*
-#          PACKAGE_NAME: DotNetFool
-=======
 
   publish:
     needs: [build]
@@ -53,4 +34,3 @@ jobs:
           NUGET_KEY: ${{secrets.NUGET_API_SECRET}}
           TAG_FORMAT: v*
           PACKAGE_NAME: DotNetFool-${{github.event.release.tag_name}}
->>>>>>> main

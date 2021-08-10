@@ -12,11 +12,6 @@ on:
     - '!LICENSE'
     branches-ignore:
       - release
-<<<<<<< HEAD
-  pull_request:
-    branches-ignore:
-      - release
-=======
     tags-ignore:
       - 'v*'
   pull_request:
@@ -28,7 +23,7 @@ on:
       - release
     tags-ignore:
       - 'v*'
->>>>>>> main
+
 
 jobs:
   build:
