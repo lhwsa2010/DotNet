@@ -13,5 +13,29 @@ namespace DotNet.Tool
 		{
 			return ConfigurationManager.AppSettings[key];
 		}
-	}
+        
+        /// <summary>
+        /// Save a keyvalue configuration element object to the appsetings.If newkey is existed in the collection,modifie it,otherwise add new keyvalue to the collection.
+        /// </summary>
+        /// <param name="newKey">key</param>
+        /// <param name="newValue">value</param>
+        public static void Save(string newKey, string newValue)
+        {
+            bool isModified = !string.IsNullOrEmpty(ConfigurationManager.AppSettings[newKey]);
+            // Open App.Config of executable
+            Configuration config =
+                ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            // You need to remove the old settings object before you can replace it
+            if (isModified)
+                config.AppSettings.Settings.Remove(newKey);
+            // Add an Application Setting.
+            config.AppSettings.Settings.Add(newKey, newValue);
+            // Save the changes in App.config file.
+            config.Save(ConfigurationSaveMode.Modified);
+            // Force a reload of a changed section.
+            ConfigurationManager.RefreshSection("appSettings");
+        }
+
+
+    }
 }
