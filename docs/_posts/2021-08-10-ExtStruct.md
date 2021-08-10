@@ -11,6 +11,7 @@ layout: post
 #### Serialize
 Serializes the struct to a byte array.
 ```
+studentStruct.Serialize()
 studentStruct.Serialize<TStruct>()
 ```
 
