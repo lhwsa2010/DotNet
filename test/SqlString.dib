@@ -1,0 +1,31 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.0/DotNet.dll"
+
+#!csharp
+
+using System;
+
+#!csharp
+
+string s="select * from user where name='nick';update user set name='tom'";
+
+#!csharp
+
+s.FilterSql()
+
+#!csharp
+
+s.IsSafeSqlString()
+
+#!csharp
+
+s.addBeginEnd()
+
+#!csharp
+
+s.addSplit()
+
+#!csharp
+
+s.addSplit(true)

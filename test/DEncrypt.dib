@@ -1,0 +1,43 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.0/DotNet.dll"
+
+#!csharp
+
+using DotNet.Tool;
+
+#!csharp
+
+string s="123456";
+
+#!csharp
+
+DEncrypt.Md5(s)
+
+#!csharp
+
+DEncrypt.Md5(s,true)
+
+#!csharp
+
+DEncrypt.Sha1(s)
+
+#!csharp
+
+DEncrypt.Sha1(s,true)
+
+#!csharp
+
+DEncrypt.Encrypt(s)
+
+#!csharp
+
+DEncrypt.Encrypt(s,"luohongwei")
+
+#!csharp
+
+DEncrypt.Decrypt("BE3017EA5B9C68C6")
+
+#!csharp
+
+DEncrypt.Decrypt("D8E3D5B74BEA83D2","luohongwei")

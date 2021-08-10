@@ -1,20 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.Text;
 
-namespace System
+namespace DotNet.Tool
 {
-    internal static class UrlEncoder
+    /// <summary>
+    /// UrlEncoder
+    /// </summary>
+    public static class UrlEncoder
     {
         private const string unreservedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789~.-_";
 
-        public static string Encode(string value)
+        /// <summary>
+        /// Encode url.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static string Encode(string value,string charset = "UTF-8")
         {
             if (value == null)
                 return String.Empty;
 
-            var bytes = System.Text.Encoding.UTF8.GetBytes(value);
+            var bytes = Encoding.GetEncoding(charset).GetBytes(value);
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
             foreach (byte b in bytes)
             {
@@ -28,7 +35,13 @@ namespace System
             return sb.ToString();
         }
 
-        public static string Decode(string value)
+        /// <summary>
+        /// Decode url.
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+
+        public static string Decode(string value, string charset = "UTF-8")
         {
             if (value == null)
                 return String.Empty;
@@ -51,7 +64,7 @@ namespace System
                 }
             }
 
-            return System.Text.Encoding.UTF8.GetString(buffer.ToArray(), 0, buffer.Count);
+            return Encoding.GetEncoding(charset).GetString(buffer.ToArray(), 0, buffer.Count);
         }
     }
 }

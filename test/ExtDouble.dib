@@ -1,0 +1,10 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.1/DotNet.dll"
+
+#!csharp
+
+double? d=null;
+Console.WriteLine(d.GetDouble());
+d=0.1D;
+Console.WriteLine(d.GetDouble());

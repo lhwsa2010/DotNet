@@ -4,15 +4,41 @@ name: build
 
 on:
   push:
+    paths:
+    - '**.cs'
+    - '**.csproj'
+    - '!*.md'
+    - '!.github/workflows/**.'
+    - '!LICENSE'
     branches-ignore:
       - release
+<<<<<<< HEAD
   pull_request:
     branches-ignore:
       - release
+=======
+    tags-ignore:
+      - 'v*'
+  pull_request:
+#    branches: [main]
+    paths:
+    - '**.cs'
+    - '**.csproj'
+    branches-ignore:
+      - release
+    tags-ignore:
+      - 'v*'
+>>>>>>> main
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+
+    name: build-${{matrix.os}}
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
 
     steps:
       - uses: actions/checkout@v2
@@ -21,4 +47,4 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
       - name: Build
-        run: dotnet build
+        run: dotnet build --configuration Release --no-restore

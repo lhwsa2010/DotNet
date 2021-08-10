@@ -1,0 +1,122 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.1/DotNet.dll"
+
+#!csharp
+
+string s=string.Empty;
+Console.WriteLine(s.IsNullOrEmpty());
+s=null;
+Console.WriteLine(s.IsNullOrEmpty());
+s="";
+Console.WriteLine(s.IsNullOrEmpty());
+
+#!csharp
+
+string s=string.Empty;
+Console.WriteLine(s.GetInt());
+s=null;
+Console.WriteLine(s.GetInt());
+s="";
+Console.WriteLine(s.GetInt());
+s="abc";
+Console.WriteLine(s.GetInt());
+s="12";
+Console.WriteLine(s.GetInt());
+
+#!csharp
+
+string s="111111111111111";
+Console.WriteLine(s.GetLong());
+
+#!csharp
+
+string s=null;
+Console.WriteLine(s.GetBool());
+s="";
+Console.WriteLine(s.GetBool());
+s="0";
+Console.WriteLine(s.GetBool());
+s="false";
+Console.WriteLine(s.GetBool());
+s="1";
+Console.WriteLine(s.GetBool());
+s="true";
+Console.WriteLine(s.GetBool());
+
+#!csharp
+
+string s="";
+Console.WriteLine(s.GetDecimal());
+s="1.233425452";
+Console.WriteLine(s.GetDecimal());
+s="false";
+Console.WriteLine(s.GetDecimal());
+
+#!csharp
+
+string s="";
+Console.WriteLine(s.GetDouble());
+s="1.233425452";
+Console.WriteLine(s.GetDouble());
+s="false";
+Console.WriteLine(s.GetDouble());
+
+#!csharp
+
+string s="";
+Console.WriteLine(s.GetFloat());
+s="1.233425452";
+Console.WriteLine(s.GetFloat());
+s="false";
+Console.WriteLine(s.GetFloat());
+
+#!csharp
+
+string s=null;
+Console.WriteLine(s.GetDateTime());
+s="";
+Console.WriteLine(s.GetDateTime());
+s="2021-07-27 12:12:12";
+Console.WriteLine(s.GetDateTime());
+
+#!csharp
+
+string s="http://localhost:90/api/docs/1?name=LA&age=12";
+s.ToEncode()
+
+#!csharp
+
+string s="http://localhost:90/api/docs/1?name=LA&age=12";
+s.ToDecode()
+
+#!csharp
+
+string s="abcdefghijkmnopqrstuvwxyz";
+Console.WriteLine(s.Subs(27));
+Console.WriteLine(s.Subs(3));
+Console.WriteLine(s.Subs(3,"..."));
+Console.WriteLine(s.Subs(1,3));
+s=null;
+Console.WriteLine(s.Subs(3,"..."));
+
+#!csharp
+
+string s="abcdefg";
+Console.WriteLine(s.ToBase64());
+s="YWJjZGVmZw==";
+Console.WriteLine(s.FromBase64());
+
+#!csharp
+
+string s="<span>this is a span lable</span>";
+s.DeleteHMTL()
+
+#!csharp
+
+string s="0123456789";
+s.Left(3)
+
+#!csharp
+
+s.Right(3)

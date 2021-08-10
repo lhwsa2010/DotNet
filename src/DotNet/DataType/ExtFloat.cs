@@ -1,28 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace System
+﻿namespace System
 {
     /// <summary>
-    /// float
+    /// Float Extends
     /// </summary>
     public static class ExtFloat
     {
         /// <summary>
-        /// float? to float
+        /// convert nullable float to float
         /// </summary>
-        /// <param name="d"></param>
+        /// <param name="f"></param>
         /// <returns></returns>
-        public static float GetFloat(this float? d)
+        public static float GetFloat(this float? f)
         {
-            float s = 0;
-            if (d.HasValue)
-            {
-                float.TryParse(d.GetString(), out s);
-            }
-            return s;
+            return f ?? default;
         }
     }
 }

@@ -1,0 +1,15 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.0/DotNet.dll"
+
+#!csharp
+
+string url="name=la&age=12";
+
+#!csharp
+
+using DotNet.Tool;
+
+#!csharp
+
+UrlParse.Parse(url)

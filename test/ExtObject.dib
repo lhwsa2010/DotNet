@@ -1,0 +1,12 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.0/DotNet.dll"
+
+#!csharp
+
+object a=1;
+Console.WriteLine(a.GetString());
+a='c';
+Console.WriteLine(a.GetString());
+a=false;
+Console.WriteLine(a.GetString());

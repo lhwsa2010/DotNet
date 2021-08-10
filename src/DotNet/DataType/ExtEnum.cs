@@ -1,35 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 
-namespace DotNet.DataType
+namespace System
 {
     public static class ExtEnum
     {
-        /// 用于字符串和枚举类型的转换
+
+        /// <summary>
+        /// Converts the string representation of the name or numeric value of one or more enumerated constants to an equivalent enumerated object.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static T EnumParse<T>(string value)
+        public static T Parse<T>(this string value,bool ignoreCase=default)where T:struct
         {
-            try
-            {
-                return (T)Enum.Parse(typeof(T), value);
-            }
-            catch
-            {
-                return default(T);
-            }
+            if (Enum.TryParse<T>(value,ignoreCase,out T result))
+                return (T)result;
+            return default(T);
         }
-
+        
         /// <summary>
-        /// 读取枚举类型Description信息 枚举需申明[Description("xx")]
+        /// Get enum description. i.e:[Description("xx")]
         /// </summary>
         /// <param name="e"></param>
         /// <returns></returns>
-        public static string ToDescription(this Enum e)
+        public static string GetDescription(this Enum e)
         {
             string enumName = e.ToString();
             Type t = e.GetType();
@@ -38,5 +32,7 @@ namespace DotNet.DataType
 
             return arrDesc[0].Description;
         }
+
+
     }
 }

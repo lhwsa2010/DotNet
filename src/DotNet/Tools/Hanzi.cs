@@ -1,8 +1,12 @@
 ﻿using System;
+using System.Text;
 using System.Text.RegularExpressions;
 
-namespace System
+namespace DotNet.Tool
 {
+    /// <summary>
+    /// undone
+    /// </summary>
     public class Hanzi
     {
         /// <summary>        
@@ -15,12 +19,13 @@ namespace System
         /// </summary>
         private static string[] pyName = new string[] { "A", "Ai", "An", "Ang", "Ao", "Ba", "Bai", "Ban", "Bang", "Bao", "Bei", "Ben", "Beng", "Bi", "Bian", "Biao", "Bie", "Bin", "Bing", "Bo", "Bu", "Ba", "Cai", "Can", "Cang", "Cao", "Ce", "Ceng", "Cha", "Chai", "Chan", "Chang", "Chao", "Che", "Chen", "Cheng", "Chi", "Chong", "Chou", "Chu", "Chuai", "Chuan", "Chuang", "Chui", "Chun", "Chuo", "Ci", "Cong", "Cou", "Cu", "Cuan", "Cui", "Cun", "Cuo", "Da", "Dai", "Dan", "Dang", "Dao", "De", "Deng", "Di", "Dian", "Diao", "Die", "Ding", "Diu", "Dong", "Dou", "Du", "Duan", "Dui", "Dun", "Duo", "E", "En", "Er", "Fa", "Fan", "Fang", "Fei", "Fen", "Feng", "Fo", "Fou", "Fu", "Ga", "Gai", "Gan", "Gang", "Gao", "Ge", "Gei", "Gen", "Geng", "Gong", "Gou", "Gu", "Gua", "Guai", "Guan", "Guang", "Gui", "Gun", "Guo", "Ha", "Hai", "Han", "Hang", "Hao", "He", "Hei", "Hen", "Heng", "Hong", "Hou", "Hu", "Hua", "Huai", "Huan", "Huang", "Hui", "Hun", "Huo", "Ji", "Jia", "Jian", "Jiang", "Jiao", "Jie", "Jin", "Jing", "Jiong", "Jiu", "Ju", "Juan", "Jue", "Jun", "Ka", "Kai", "Kan", "Kang", "Kao", "Ke", "Ken", "Keng", "Kong", "Kou", "Ku", "Kua", "Kuai", "Kuan", "Kuang", "Kui", "Kun", "Kuo", "La", "Lai", "Lan", "Lang", "Lao", "Le", "Lei", "Leng", "Li", "Lia", "Lian", "Liang", "Liao", "Lie", "Lin", "Ling", "Liu", "Long", "Lou", "Lu", "Lv", "Luan", "Lue", "Lun", "Luo", "Ma", "Mai", "Man", "Mang", "Mao", "Me", "Mei", "Men", "Meng", "Mi", "Mian", "Miao", "Mie", "Min", "Ming", "Miu", "Mo", "Mou", "Mu", "Na", "Nai", "Nan", "Nang", "Nao", "Ne", "Nei", "Nen", "Neng", "Ni", "Nian", "Niang", "Niao", "Nie", "Nin", "Ning", "Niu", "Nong", "Nu", "Nv", "Nuan", "Nue", "Nuo", "O", "Ou", "Pa", "Pai", "Pan", "Pang", "Pao", "Pei", "Pen", "Peng", "Pi", "Pian", "Piao", "Pie", "Pin", "Ping", "Po", "Pu", "Qi", "Qia", "Qian", "Qiang", "Qiao", "Qie", "Qin", "Qing", "Qiong", "Qiu", "Qu", "Quan", "Que", "Qun", "Ran", "Rang", "Rao", "Re", "Ren", "Reng", "Ri", "Rong", "Rou", "Ru", "Ruan", "Rui", "Run", "Ruo", "Sa", "Sai", "San", "Sang", "Sao", "Se", "Sen", "Seng", "Sha", "Shai", "Shan", "Shang", "Shao", "She", "Shen", "Sheng", "Shi", "Shou", "Shu", "Shua", "Shuai", "Shuan", "Shuang", "Shui", "Shun", "Shuo", "Si", "Song", "Sou", "Su", "Suan", "Sui", "Sun", "Suo", "Ta", "Tai", "Tan", "Tang", "Tao", "Te", "Teng", "Ti", "Tian", "Tiao", "Tie", "Ting", "Tong", "Tou", "Tu", "Tuan", "Tui", "Tun", "Tuo", "Wa", "Wai", "Wan", "Wang", "Wei", "Wen", "Weng", "Wo", "Wu", "Xi", "Xia", "Xian", "Xiang", "Xiao", "Xie", "Xin", "Xing", "Xiong", "Xiu", "Xu", "Xuan", "Xue", "Xun", "Ya", "Yan", "Yang", "Yao", "Ye", "Yi", "Yin", "Ying", "Yo", "Yong", "You", "Yu", "Yuan", "Yue", "Yun", "Za", "Zai", "Zan", "Zang", "Zao", "Ze", "Zei", "Zen", "Zeng", "Zha", "Zhai", "Zhan", "Zhang", "Zhao", "Zhe", "Zhen", "Zheng", "Zhi", "Zhong", "Zhou", "Zhu", "Zhua", "Zhuai", "Zhuan", "Zhuang", "Zhui", "Zhun", "Zhuo", "Zi", "Zong", "Zou", "Zu", "Zuan", "Zui", "Zun", "Zuo" };
 
-        public static string ToPinyin(string hanzi)
-        {
-            return ToPinyin(hanzi, 10);
-        }
-
-        public static string ToPinyin(string hanzi, int maxLength)
+        /// <summary>
+        /// 汉字转拼音
+        /// </summary>
+        /// <param name="hanzi">汉字</param>
+        /// <param name="maxLength">最大长度</param>
+        /// <returns></returns>
+        public static string ToPinyin(string hanzi, int maxLength=10)
         {
             if (string.IsNullOrEmpty(hanzi))
                 return null;
@@ -34,71 +39,61 @@ namespace System
                 hanzi = hanzi.Substring(0, maxLength);
             }
             Regex regex = new Regex(@"([a-zA-Z0-9\._]+)", RegexOptions.IgnoreCase);
-            if (regex.IsMatch(hanzi))
+            if (regex.IsMatch(hanzi) && hanzi.Equals(regex.Match(hanzi).Groups[1].Value, StringComparison.OrdinalIgnoreCase))
             {
-                if (hanzi.Equals(regex.Match(hanzi).Groups[1].Value, StringComparison.OrdinalIgnoreCase))
-                {
-                    return hanzi;
-                }
+                return hanzi;
             }
             // 匹配中文字符           
             regex = new Regex("^[\u4e00-\u9fa5]$");
-            byte[] array = new byte[2];
-            string pyString = "";
-            int chrAsc = 0;
-            int i1 = 0;
-            int i2 = 0;
-            char[] noWChar = hanzi.ToCharArray();
-            for (int j = 0; j < noWChar.Length; j++)
+            string text = "";
+            char[] array = hanzi.ToCharArray();
+            for (int i = 0; i < array.Length; i++)
             {
-                // 中文字符                
-                if (regex.IsMatch(noWChar[j].ToString()))
+                if (regex.IsMatch(array[i].ToString()))
                 {
-                    array = System.Text.Encoding.Default.GetBytes(noWChar[j].ToString());
-                    i1 = (short)(array[0]);
-                    i2 = (short)(array[1]);
-                    chrAsc = i1 * 256 + i2 - 65536;
-                    if (chrAsc > 0 && chrAsc < 160)
+                    byte[] expr_29B = Encoding.Default.GetBytes(array[i].ToString());
+                    int num = (int)expr_29B[0];
+                    int num2 = (int)expr_29B[1];
+                    int num3 = num * 256 + num2 - 65536;
+                    if (num3 > 0 && num3 < 160)
                     {
-                        pyString += noWChar[j];
+                        text += array[i].ToString();
+                    }
+                    else if (num3 == -9254)
+                    {
+                        text += "Zhen";
+                    }
+                    else if (num3 == -4929)
+                    {
+                        text += "Wei";
                     }
                     else
                     {
-                        // 修正部分文字          
-                        if (chrAsc == -9254)
-                            // 修正"圳"字                         
-                            pyString += "Zhen";
-                        else if (chrAsc == -4929)
-                            pyString += "Wei";//炜
-                        else
+                        for (int j = Hanzi.pyValue.Length - 1; j >= 0; j--)
                         {
-                            for (int i = (pyValue.Length - 1); i >= 0; i--)
+                            if (Hanzi.pyValue[j] <= num3)
                             {
-                                if (pyValue[i] <= chrAsc)
-                                {
-                                    pyString += pyName[i];
-                                    break;
-                                }
+                                text += Hanzi.pyName[j];
+                                break;
                             }
                         }
                     }
                 }
-                // 非中文字符      
                 else
                 {
-                    pyString += noWChar[j].ToString();
+                    text += array[i].ToString();
                 }
             }
-            return pyString;
+            return text;
         }
 
         /// <summary>
         /// 获取每个字的首字母（以split分隔）
         /// </summary>
-        /// <param name="hanzi"></param>
-        /// <param name="split"></param>
+        /// <param name="hanzi">汉字</param>
+        /// <param name="split">分隔符</param>
         /// <returns></returns>
-        public static string GetFirstCodes(string hanzi, string split)
+        public static string GetFirstCodes(string hanzi, string split="")
         {
             string s = "";
             char[] cc = ToPinyin(hanzi, 10000000).ToCharArray();
@@ -116,14 +111,6 @@ namespace System
             }
             return s;
         }
-        /// <summary>
-        /// 获取每个字的首字母
-        /// </summary>
-        /// <param name="hanzi"></param>
-        /// <returns></returns>
-        public static string GetFirstCodes(string hanzi)
-        {
-            return GetFirstCodes(hanzi, "");
-        }
+        
     }
 }

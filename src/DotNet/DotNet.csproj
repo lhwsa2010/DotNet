@@ -6,6 +6,53 @@
     <Version>1.0.0</Version>
     <Authors>骆宏伟</Authors>
     <Company>骆宏伟</Company>
+<<<<<<< HEAD
   </PropertyGroup>
   
+=======
+    <Description>这是一个.net公共类库，提供了各种常用操作，如：常用类型变量之间互转等</Description>
+    <Copyright />
+    <PackageIcon>Icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/lhwsa2010/DotNet</RepositoryUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>5</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Thief\**" />
+    <EmbeddedResource Remove="Thief\**" />
+    <None Remove="Thief\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Cryptography\DESCrypt.cs" />
+    <Compile Remove="Cryptography\RS232.cs" />
+    <Compile Remove="Cryptography\RSACrypt.cs" />
+    <Compile Remove="IO\INIFile.cs" />
+    <Compile Remove="Tools\Hanzi.cs" />
+    <Compile Remove="Tools\Pub.cs" />
+    <Compile Remove="Tools\WebUtils.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Control\" />
+    <Folder Include="Form\" />
+    <Folder Include="IO\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+  </ItemGroup>
+
+>>>>>>> main
 </Project>

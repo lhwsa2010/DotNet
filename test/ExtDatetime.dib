@@ -1,0 +1,43 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.0/DotNet.dll"
+
+#!csharp
+
+DateTime? d=null;
+Console.WriteLine(d.GetDateTime());
+d=DateTime.Now;
+Console.WriteLine(d.GetString("yyyy-MM-dd hh:mm:ss"));
+
+#!csharp
+
+DateTime d=DateTime.Now;
+Console.WriteLine(d.FormatCN());
+Console.WriteLine(d.FormatCN(true));
+d=DateTime.Now.AddDays(-1);
+Console.WriteLine(d.FormatCN());
+Console.WriteLine(d.FormatCN(true));
+d=DateTime.Now.AddDays(1);
+Console.WriteLine(d.FormatCN());
+Console.WriteLine(d.FormatCN(true));
+
+#!csharp
+
+d=d.AddDays(1);
+d
+
+#!csharp
+
+d.FirstDayOfMonth()
+
+#!csharp
+
+d.LastDayOfMonth()
+
+#!csharp
+
+d.DaysInMonth()
+
+#!csharp
+
+d.DayOfWeekToCN()

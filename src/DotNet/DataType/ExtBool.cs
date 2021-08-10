@@ -1,30 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace System
+﻿namespace System
 {
     /// <summary>
-    /// bool
+    /// Bool Extends
     /// </summary>
     public static class ExtBool
     {
         /// <summary>
-        /// 传入true返回1，反之为0
+        /// true convert to 1,false convert to 0
         /// </summary>
         /// <param name="b"></param>
         /// <returns></returns>
         public static int GetInt(this bool b)
         {
             if (b)
-            {
                 return 1;
-            }
-            else
-            {
-                return 0;
-            }
+            return 0;
         }
     }
 }

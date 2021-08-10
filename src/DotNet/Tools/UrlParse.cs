@@ -1,21 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
-namespace System
+namespace DotNet.Tool
 {
+    /// <summary>
+    /// UrlParse
+    /// </summary>
     public static class UrlParse
     {
-        public static Dictionary<string, string> Parse(this string formUrlEncodedValue)
+        /// <summary>
+        /// Parse form url value.
+        /// </summary>
+        /// <param name="formUrlValue"></param>
+        /// <returns></returns>
+        public static Dictionary<string, string> Parse(string formUrlValue)
         {
 
-            if (formUrlEncodedValue == null)
-                throw new ArgumentNullException("formUrlEncodedValue");
+            if (formUrlValue == null)
+                throw new ArgumentNullException("formUrlValue");
             Dictionary<string, string> dic = new Dictionary<string, string>();
-            if (formUrlEncodedValue.Contains("&") || formUrlEncodedValue.Contains("="))
+            if (formUrlValue.Contains("&") || formUrlValue.Contains("="))
             {
-                var pairs = formUrlEncodedValue.Split('&');
+                var pairs = formUrlValue.Split('&');
                 foreach (var pair in pairs)
                 {
                     var nameValue = pair.Split('=');

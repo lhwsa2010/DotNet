@@ -1,0 +1,24 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.0/DotNet.dll"
+
+#!csharp
+
+[Serializable]
+public struct StudentStruct
+{
+public string name;
+public int age;
+}
+
+#!csharp
+
+StudentStruct studentStruct=new StudentStruct{name="LA",age=12};
+
+#!csharp
+
+byte[] bytes=studentStruct.Serialize<StudentStruct>();
+
+#!csharp
+
+bytes.Deserialize<StudentStruct>()

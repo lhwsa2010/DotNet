@@ -1,72 +1,36 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace System
+﻿namespace System
 {
     /// <summary>
-    /// DateTime
+    /// DateTime Extends
     /// </summary>
     public static class ExtDatetime
     {
         /// <summary>
-        /// datetime? to datetime(格式：例：yyyy-MM-dd hh:mm:ss)
+        /// convert nullable DateTime to DateTime.
         /// </summary>
-        /// <param name="s"></param>
         /// <returns></returns>
-        public static DateTime GetDateTime(this DateTime? s)
+        public static DateTime GetDateTime(this DateTime? d)
         {
-            if (s.HasValue)
-            {
-                DateTime d = DateTime.Now;
-                DateTime.TryParse(s.GetString(), out d);
-                return d;
-            }
-            else
-            {
-                return DateTime.Now;
-            }
+            return d ?? DateTime.Now;
         }
 
         /// <summary>
-        /// datetime? to String
+        /// convert nullable DateTime to string(format：i.e：yyyy-MM-dd hh:mm:ss)
         /// </summary>
-        /// <param name="s"></param>
         /// <param name="format">yyyy-MM-dd etc.</param>
         /// <returns></returns>
-        public static string GetString(this DateTime? s, string format)
+        public static string GetString(this DateTime? d, string format)
         {
-            if (s.HasValue)
-            {
-                DateTime d = DateTime.Now;
-                DateTime.TryParse(s.GetString(), out d);
-                return d.ToString(format);
-            }
-            else
-            {
-                return DateTime.Now.ToString(format);
-            }
+            return (d ?? DateTime.Now).ToString(format);
         }
 
         /// <summary>
-        /// 2009-09-09 12:30 星期三
-        /// </summary>
-        /// <param name="dt">传入的时间</param>
-        /// <returns>格式：2009-09-09 12:30 星期三</returns>
-        public static string Formate(this DateTime dt)
-        {
-            return Formate(dt, false);
-        }
-
-        /// <summary>
-        /// 2009-09-09
-        /// 12:30 星期三
+        /// 将日期转换成`日期+汉字`格式
         /// </summary>
         /// <param name="dt">传入的时间</param>
         /// <param name="br">默认为false不换行，true换行</param>
         /// <returns>br=false格式：2009-09-09 br 12:30 星期三</returns>
-        public static string Formate(this DateTime dt, bool br)
+        public static string FormatCN(this DateTime dt, bool br=default)
         {
             DateTime now = DateTime.Now;
             DateTime date = dt.Date;
@@ -114,6 +78,70 @@ namespace System
                 }
             }
 
+            return res;
+        }
+
+        /// <summary>
+        /// Get first day of month.
+        /// </summary>
+        /// <param name="datetime"></param>
+        /// <returns></returns>
+        public static DateTime FirstDayOfMonth(this DateTime datetime)
+        {
+            return datetime.AddDays(1 - datetime.Day).Date;
+        }
+
+        /// <summary>
+        /// Get last day of month.
+        /// </summary>
+        /// <param name="datetime"></param>
+        /// <returns></returns>
+        public static DateTime LastDayOfMonth(this DateTime datetime)
+        {
+            return new DateTime(datetime.Year, datetime.Month, datetime.DaysInMonth());
+        }
+
+        /// <summary>
+        /// Get days in month.
+        /// </summary>
+        /// <param name="datetime"></param>
+        /// <returns></returns>
+        public static int DaysInMonth(this DateTime datetime)
+        {
+            return DateTime.DaysInMonth(datetime.Year, datetime.Month);
+        }
+
+        /// <summary>
+        /// 返回星期几
+        /// </summary>
+        /// <returns></returns>
+        public static string DayOfWeekToCN(this DateTime datetime)
+        {
+            var res = "";
+            switch (datetime.DayOfWeek.ToString("D"))
+            {
+                case "0":
+                    res = "日 ";
+                    break;
+                case "1":
+                    res = "一 ";
+                    break;
+                case "2":
+                    res = "二 ";
+                    break;
+                case "3":
+                    res = "三 ";
+                    break;
+                case "4":
+                    res = "四 ";
+                    break;
+                case "5":
+                    res = "五 ";
+                    break;
+                case "6":
+                    res = "六 ";
+                    break;
+            }
             return res;
         }
     }
