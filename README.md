@@ -8,7 +8,7 @@
 <img src="https://github.com/lhwsa2010/DotNet/blob/main/logo.png">
 </div>
 
-This is a .Net library with common operations.i.e:convert int to string、convert string to bool,etc.  
+This is a C# library for common operating extensions.i.e:convert int to string、convert string to bool,etc.  
 这是一个.net公共类库，提供了各种常用操作，如：常用类型变量之间互转等
 
 
