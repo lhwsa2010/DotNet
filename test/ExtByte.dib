@@ -1,0 +1,12 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.0/DotNet.dll"
+
+#!csharp
+
+byte[] bytes=new byte[3];
+bytes
+
+#!csharp
+
+bytes.Resize(5).Length
