@@ -11,7 +11,7 @@
     <PackageIcon>Icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/lhwsa2010/DotNet</RepositoryUrl>
 	<RepositoryType>git</RepositoryType>
-	<PackageProjectUrl>https://github.com/lhwsa2010/DotNet</PackageProjectUrl>
+	<PackageProjectUrl>https://lhwsa2010.github.io/DotNet/</PackageProjectUrl>
 	<PackageTags>C# .net .net core library extensions</PackageTags>
 	<PackageReleaseNotes>C# .net .net core library extensions</PackageReleaseNotes>
   </PropertyGroup>
