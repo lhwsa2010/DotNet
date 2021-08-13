@@ -1,0 +1,33 @@
+#!csharp
+
+#r "../src/DotNet/bin/Debug/netstandard2.0/DotNet.dll"
+
+#!csharp
+
+using DotNet.Cryptography;
+using DotNet.Hex;
+
+#!csharp
+
+string key="5e963b52f388532839f873f78e6e79ec73aa1db8ccc2595c";
+string iv="ba2989f828c46c29";
+
+#!csharp
+
+DESCrypt.Encrypt("luohongwei", key,iv)
+
+#!csharp
+
+byte[] enBytes=DESCrypt.Encrypt(System.Text.Encoding.UTF8.GetBytes("luohongwei"),
+key.FromHex(),iv.FromHex());
+Convert.ToBase64String(enBytes)
+
+#!csharp
+
+DESCrypt.Decrypt("kG80Y/WtZkuopjhh9u2ZDQ==",key,iv)
+
+#!csharp
+
+byte[] deBytes=DESCrypt.Decrypt(enBytes,
+key.FromHex(),iv.FromHex());
+System.Text.Encoding.UTF8.GetString(deBytes)

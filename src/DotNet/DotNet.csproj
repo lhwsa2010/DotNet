@@ -27,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Cryptography\DESCrypt.cs" />
     <Compile Remove="Cryptography\RS232.cs" />
     <Compile Remove="Cryptography\RSACrypt.cs" />
     <Compile Remove="IO\INIFile.cs" />
