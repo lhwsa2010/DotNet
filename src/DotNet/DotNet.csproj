@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>DotNetFool</PackageId>
-    <Version>2.0.1</Version>
+    <Version>2.0.2</Version>
     <Authors>骆宏伟</Authors>
     <Company>骆宏伟</Company>
     <Description>This is a C# library for common operating extensions.i.e:convert int to string、convert string to bool,etc.  这是一个.net公共类库，提供了各种常用操作，如：常用类型变量之间互转等</Description>
