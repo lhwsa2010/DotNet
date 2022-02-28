@@ -18,8 +18,8 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: DotNetFool
-longtitle: DotNetFool 公共类库
+title: DotNetFool NuGet Package Description
+longtitle: DotNetFool 公共类库说明
 author: 骆宏伟
 email: 754240664@qq.com
 description: >- # this means to ignore newlines until "baseurl:"
